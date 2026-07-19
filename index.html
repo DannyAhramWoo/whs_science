@@ -1,0 +1,193 @@
+<title>Physics Notes</title>
+
+<style>
+:root {
+  --paper: #FAF8F3;
+  --ink: #1C1E21;
+  --ink-soft: #55595F;
+  --ink-faint: #8A8F96;
+  --rule: #DDD8CC;
+  --copper: #B4632A;
+  --copper-soft: #F0E2D4;
+  --card: #FFFFFF;
+  --done: #2E7D4F;
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --sans: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #16181B; --ink: #E8E4DC; --ink-soft: #A8ACB2; --ink-faint: #71767D;
+    --rule: #2E3237; --copper: #E08A44; --copper-soft: #33241A; --card: #1D2024;
+    --done: #5BBE85;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #16181B; --ink: #E8E4DC; --ink-soft: #A8ACB2; --ink-faint: #71767D;
+  --rule: #2E3237; --copper: #E08A44; --copper-soft: #33241A; --card: #1D2024;
+  --done: #5BBE85;
+}
+:root[data-theme="light"] {
+  --paper: #FAF8F3; --ink: #1C1E21; --ink-soft: #55595F; --ink-faint: #8A8F96;
+  --rule: #DDD8CC; --copper: #B4632A; --copper-soft: #F0E2D4; --card: #FFFFFF;
+  --done: #2E7D4F;
+}
+
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.6;
+  margin: 0; padding: 0 20px 80px;
+}
+.wrap { max-width: 660px; margin: 0 auto; }
+
+header { padding: 60px 0 30px; border-bottom: 2px solid var(--ink); margin-bottom: 36px; }
+.eyebrow {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--copper); margin: 0 0 14px;
+}
+h1 {
+  font-family: var(--serif); font-size: clamp(32px, 7vw, 46px);
+  line-height: 1.08; font-weight: 600; margin: 0 0 14px;
+  letter-spacing: -0.015em; text-wrap: balance;
+}
+.sub { font-size: 17.5px; color: var(--ink-soft); margin: 0; max-width: 56ch; }
+
+h2 {
+  font-family: var(--serif); font-size: 22px; font-weight: 600;
+  margin: 40px 0 14px;
+}
+
+.ch-list { display: flex; flex-direction: column; gap: 10px; }
+a.ch {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 16px 18px; background: var(--card);
+  border: 1px solid var(--rule); border-radius: 3px;
+  text-decoration: none; color: var(--ink);
+  transition: border-color 0.15s, transform 0.15s;
+}
+a.ch:hover { border-color: var(--copper); transform: translateX(2px); }
+a.ch:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+.ch-num {
+  font-family: var(--mono); font-size: 13px; color: var(--copper);
+  font-weight: 600; flex-shrink: 0; min-width: 22px;
+}
+.ch-body { flex: 1; }
+.ch-title { font-weight: 700; font-size: 17px; display: block; margin-bottom: 3px; }
+.ch-desc { font-size: 14.5px; color: var(--ink-soft); display: block; }
+.ch-tag {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--done);
+  background: var(--copper-soft); padding: 3px 8px; border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.planned {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 15px 18px; border: 1px dashed var(--rule);
+  border-radius: 3px; color: var(--ink-faint);
+}
+.planned .ch-num { color: var(--ink-faint); }
+.planned .ch-title { font-weight: 600; color: var(--ink-faint); }
+
+.note {
+  background: var(--card); border-left: 3px solid var(--copper);
+  padding: 16px 20px; margin: 30px 0; border-radius: 0 3px 3px 0;
+  font-size: 16px;
+}
+.note p { margin: 0 0 10px; }
+.note p:last-child { margin: 0; }
+
+footer {
+  margin-top: 50px; padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px; color: var(--ink-faint);
+}
+@media (max-width: 560px) { body { font-size: 16px; padding: 0 16px 60px; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Concept Physics</p>
+  <h1>Physics Notes</h1>
+  <p class="sub">A concept-first physics book for upper primary. Each chapter starts from what something actually is, not from formulas.</p>
+</header>
+
+<h2>Chapters</h2>
+<div class="ch-list">
+
+  <a class="ch" href="ch3-electric-circuits.html">
+    <span class="ch-num">3</span>
+    <span class="ch-body">
+      <span class="ch-title">Electric Circuits</span>
+      <span class="ch-desc">Closed loops, conductors, series and parallel, where the meters go</span>
+    </span>
+    <span class="ch-tag">Ready</span>
+  </a>
+
+  <div class="planned">
+    <span class="ch-num">1</span>
+    <span class="ch-body">
+      <span class="ch-title">Forces and Friction</span>
+      <span class="ch-desc">Contact and non-contact forces, balanced and unbalanced</span>
+    </span>
+  </div>
+
+  <div class="planned">
+    <span class="ch-num">2</span>
+    <span class="ch-body">
+      <span class="ch-title">Mass and Weight</span>
+      <span class="ch-desc">Why mass stays the same on the Moon but weight does not</span>
+    </span>
+  </div>
+
+  <div class="planned">
+    <span class="ch-num">4</span>
+    <span class="ch-body">
+      <span class="ch-title">Magnetism</span>
+      <span class="ch-desc">Poles, magnetic materials, electromagnets</span>
+    </span>
+  </div>
+
+  <div class="planned">
+    <span class="ch-num">5</span>
+    <span class="ch-body">
+      <span class="ch-title">Floating and Density</span>
+      <span class="ch-desc">Upthrust, why heavy ships float, density comparisons</span>
+    </span>
+  </div>
+
+  <div class="planned">
+    <span class="ch-num">6</span>
+    <span class="ch-body">
+      <span class="ch-title">Heat Transfer</span>
+      <span class="ch-desc">Conduction, convection, radiation, thermal equilibrium</span>
+    </span>
+  </div>
+
+  <div class="planned">
+    <span class="ch-num">7</span>
+    <span class="ch-body">
+      <span class="ch-title">Light and Colour</span>
+      <span class="ch-desc">Reflection, refraction, filters, how we see colour</span>
+    </span>
+  </div>
+
+</div>
+
+<div class="note">
+  <p><strong>How to use this book.</strong> Read the concept, study the diagram, then answer the Think and Explain questions <em>out loud</em> before opening the answer. Saying it in full sentences is the test — recognising the answer is not the same as knowing it.</p>
+  <p>The multi-statement practice matters more than it looks: those questions carry double marks.</p>
+</div>
+
+<h2>Companion material</h2>
+<div class="note">
+  <p><strong>Hewitt, <em>Conceptual Physics</em></strong> — read alongside each chapter. Do the <em>Think and Explain</em> questions at the end; skip <em>Think and Solve</em>, which is calculation practice you do not need yet.</p>
+  <p><strong>PhET simulations</strong> — build the circuit, watch the bulbs, then come back to the diagram. Concepts stick far better after you have moved something with your own hands.</p>
+</div>
+
+<footer>
+  Concept-first chapters for upper primary physics.
+</footer>
+
+</div>

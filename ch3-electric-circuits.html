@@ -1,0 +1,938 @@
+<title>Electric Circuits — Physics Notes</title>
+
+<style>
+:root {
+  --paper: #FAF8F3;
+  --ink: #1C1E21;
+  --ink-soft: #55595F;
+  --ink-faint: #8A8F96;
+  --rule: #DDD8CC;
+  --copper: #B4632A;
+  --copper-soft: #F0E2D4;
+  --correct: #2E7D4F;
+  --correct-soft: #E3F0E7;
+  --wrong: #B03A48;
+  --wrong-soft: #F7E4E6;
+  --card: #FFFFFF;
+
+  --wire: #1C1E21;
+  --bulb-on: #E8A33D;
+  --bulb-off: #C9C4B8;
+
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --sans: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #16181B;
+    --ink: #E8E4DC;
+    --ink-soft: #A8ACB2;
+    --ink-faint: #71767D;
+    --rule: #2E3237;
+    --copper: #E08A44;
+    --copper-soft: #33241A;
+    --correct: #5BBE85;
+    --correct-soft: #17281E;
+    --wrong: #E4707E;
+    --wrong-soft: #2C1A1D;
+    --card: #1D2024;
+    --wire: #E8E4DC;
+    --bulb-off: #4A4E54;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #16181B;
+  --ink: #E8E4DC;
+  --ink-soft: #A8ACB2;
+  --ink-faint: #71767D;
+  --rule: #2E3237;
+  --copper: #E08A44;
+  --copper-soft: #33241A;
+  --correct: #5BBE85;
+  --correct-soft: #17281E;
+  --wrong: #E4707E;
+  --wrong-soft: #2C1A1D;
+  --card: #1D2024;
+  --wire: #E8E4DC;
+  --bulb-off: #4A4E54;
+}
+:root[data-theme="light"] {
+  --paper: #FAF8F3;
+  --ink: #1C1E21;
+  --ink-soft: #55595F;
+  --ink-faint: #8A8F96;
+  --rule: #DDD8CC;
+  --copper: #B4632A;
+  --copper-soft: #F0E2D4;
+  --correct: #2E7D4F;
+  --correct-soft: #E3F0E7;
+  --wrong: #B03A48;
+  --wrong-soft: #F7E4E6;
+  --card: #FFFFFF;
+  --wire: #1C1E21;
+  --bulb-off: #C9C4B8;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 0;
+  padding: 0 20px 100px;
+}
+.wrap { max-width: 720px; margin: 0 auto; }
+
+/* ---- header ---- */
+.chapter-head {
+  padding: 56px 0 28px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 40px;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin: 0 0 14px;
+}
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(34px, 7vw, 50px);
+  line-height: 1.08;
+  font-weight: 600;
+  margin: 0 0 16px;
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+}
+.standfirst {
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ---- sections ---- */
+section { margin: 0 0 52px; }
+h2 {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.sec-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 4px;
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 700;
+  margin: 30px 0 8px;
+}
+p { margin: 0 0 16px; max-width: 65ch; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ---- figure ---- */
+figure {
+  margin: 28px 0;
+  padding: 22px 20px 16px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+figure svg { display: block; width: 100%; height: auto; }
+figcaption {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  line-height: 1.5;
+}
+figcaption b { color: var(--ink); }
+
+.fig-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 12px;
+}
+
+/* ---- key idea ---- */
+.keyidea {
+  border-left: 3px solid var(--copper);
+  background: var(--copper-soft);
+  padding: 16px 20px;
+  margin: 26px 0;
+  border-radius: 0 3px 3px 0;
+}
+.keyidea p { margin: 0; font-size: 17px; }
+.keyidea .kl {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ---- mistake callout ---- */
+.mistake {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--wrong);
+  padding: 20px 22px;
+  margin: 30px 0;
+  border-radius: 2px;
+}
+.mistake-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wrong);
+  margin-bottom: 10px;
+}
+.mistake .qtext {
+  font-family: var(--serif);
+  font-size: 17.5px;
+  margin: 0 0 14px;
+}
+.mistake .src {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+
+/* ---- questions ---- */
+.q {
+  margin: 0 0 12px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--card);
+  overflow: hidden;
+}
+.q-head {
+  display: flex;
+  gap: 12px;
+  padding: 16px 18px;
+  align-items: baseline;
+}
+.q-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--copper);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.q-text { margin: 0; font-size: 16.5px; }
+.stmts {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  font-size: 16px;
+}
+.stmts li {
+  display: flex;
+  gap: 10px;
+  padding: 5px 0;
+}
+.stmts .sn {
+  font-family: var(--mono);
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+.opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 13.5px;
+}
+.opts span {
+  border: 1px solid var(--rule);
+  padding: 4px 10px;
+  border-radius: 2px;
+  color: var(--ink-soft);
+}
+
+details {
+  border-top: 1px solid var(--rule);
+  background: transparent;
+}
+summary {
+  cursor: pointer;
+  padding: 11px 18px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--copper);
+  list-style: none;
+  user-select: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "▸ "; }
+details[open] summary::before { content: "▾ "; }
+summary:hover { background: var(--copper-soft); }
+summary:focus-visible { outline: 2px solid var(--copper); outline-offset: -2px; }
+.answer {
+  padding: 0 18px 18px;
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+.answer p { margin: 0 0 10px; }
+.answer p:last-child { margin-bottom: 0; }
+.ans-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-weight: 700;
+  background: var(--correct-soft);
+  color: var(--correct);
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* ---- section B strategy box ---- */
+.strategy {
+  background: var(--card);
+  border: 2px solid var(--copper);
+  border-radius: 3px;
+  padding: 22px;
+  margin: 28px 0;
+}
+.strategy h3 { margin-top: 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15.5px;
+  margin: 14px 0;
+}
+th, td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--rule);
+}
+th {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+td.opt {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--copper);
+  width: 52px;
+}
+.tbl-scroll { overflow-x: auto; }
+
+/* ---- checklist ---- */
+.recap {
+  border-top: 2px solid var(--ink);
+  padding-top: 24px;
+  margin-top: 48px;
+}
+.recap ul { padding-left: 0; list-style: none; margin: 0; }
+.recap li {
+  display: flex;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 16.5px;
+}
+.recap li:last-child { border-bottom: none; }
+.recap .ck { color: var(--copper); font-family: var(--mono); flex-shrink: 0; }
+
+.footer-note {
+  margin-top: 46px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; padding: 0 16px 70px; }
+  figure { padding: 16px 12px 12px; }
+}
+</style>
+
+<div class="wrap">
+
+<header class="chapter-head">
+  <p class="eyebrow">Chapter 3</p>
+  <h1>Electric Circuits</h1>
+  <p class="standfirst">Current, conductors, and why bulbs in parallel stay bright. We start from what a circuit actually <em>is</em>, not from formulas.</p>
+</header>
+
+<!-- ============ 3.1 ============ -->
+<section>
+  <span class="sec-num">3.1</span>
+  <h2>A circuit must be a closed loop</h2>
+
+  <p>Electric current is the <strong>flow of charge</strong>. Charge can only flow if there is a complete path — a loop — from one end of the battery, through the components, and back to the other end.</p>
+
+  <p>Break the loop anywhere and everything stops. Not "the part after the break" — <em>everything</em>. This is the single most useful idea in the whole chapter.</p>
+
+  <figure>
+    <div class="fig-label">Figure 3.1</div>
+    <svg viewBox="0 0 620 190" role="img" aria-label="Two circuits: a closed loop with a lit bulb, and an open loop with an unlit bulb">
+      <g fill="none" stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <!-- CLOSED circuit -->
+        <path d="M60 130 L60 60 L130 60"/>
+        <path d="M170 60 L240 60 L240 130"/>
+        <path d="M60 130 L115 130"/>
+        <path d="M155 130 L240 130"/>
+      </g>
+      <!-- battery closed -->
+      <g stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="115" y1="116" x2="115" y2="144"/>
+        <line x1="128" y1="122" x2="128" y2="138"/>
+        <line x1="141" y1="116" x2="141" y2="144"/>
+        <line x1="155" y1="122" x2="155" y2="138"/>
+      </g>
+      <!-- bulb closed (lit) -->
+      <circle cx="150" cy="60" r="20" fill="var(--bulb-on)" stroke="var(--wire)" stroke-width="2.5"/>
+      <g stroke="var(--wire)" stroke-width="2" stroke-linecap="round">
+        <line x1="136" y1="46" x2="164" y2="74"/>
+        <line x1="164" y1="46" x2="136" y2="74"/>
+      </g>
+      <!-- glow rays -->
+      <g stroke="var(--bulb-on)" stroke-width="2.5" stroke-linecap="round" opacity="0.9">
+        <line x1="150" y1="26" x2="150" y2="16"/>
+        <line x1="180" y1="34" x2="188" y2="26"/>
+        <line x1="120" y1="34" x2="112" y2="26"/>
+      </g>
+      <text x="150" y="172" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="var(--correct)" font-weight="700">CLOSED — bulb lights</text>
+
+      <!-- OPEN circuit -->
+      <g fill="none" stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <path d="M380 130 L380 60 L450 60"/>
+        <path d="M490 60 L560 60 L560 130"/>
+        <path d="M380 130 L435 130"/>
+        <path d="M475 130 L520 130"/>
+      </g>
+      <!-- gap indicator -->
+      <g stroke="var(--wrong)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="520" y1="130" x2="533" y2="118"/>
+      </g>
+      <circle cx="520" cy="130" r="3.5" fill="var(--wrong)"/>
+      <circle cx="560" cy="130" r="3.5" fill="var(--wrong)"/>
+      <text x="545" y="158" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--wrong)">gap</text>
+      <!-- battery open -->
+      <g stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="435" y1="116" x2="435" y2="144"/>
+        <line x1="448" y1="122" x2="448" y2="138"/>
+        <line x1="461" y1="116" x2="461" y2="144"/>
+        <line x1="475" y1="122" x2="475" y2="138"/>
+      </g>
+      <!-- bulb open (dark) -->
+      <circle cx="470" cy="60" r="20" fill="var(--bulb-off)" stroke="var(--wire)" stroke-width="2.5"/>
+      <g stroke="var(--wire)" stroke-width="2" stroke-linecap="round">
+        <line x1="456" y1="46" x2="484" y2="74"/>
+        <line x1="484" y1="46" x2="456" y2="74"/>
+      </g>
+      <text x="470" y="172" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="var(--wrong)" font-weight="700">OPEN — nothing flows</text>
+    </svg>
+    <figcaption><b>Left:</b> the loop is complete, so charge flows all the way round and the bulb lights. <b>Right:</b> one small gap — and the bulb stays dark. The gap does not have to be near the bulb. Anywhere in the loop is enough.</figcaption>
+  </figure>
+
+  <div class="keyidea">
+    <span class="kl">Key idea</span>
+    <p>Current is not "used up" by the bulb. The same amount of charge that leaves the battery comes back to it. What the bulb uses is <strong>energy</strong>, not charge.</p>
+  </div>
+</section>
+
+<!-- ============ 3.2 ============ -->
+<section>
+  <span class="sec-num">3.2</span>
+  <h2>Conductors and insulators</h2>
+
+  <p>A <strong>conductor</strong> lets charge move through it freely. Metals — copper, iron, aluminium — are conductors because their electrons are loosely held and can drift from atom to atom.</p>
+
+  <p>An <strong>insulator</strong> holds its electrons tightly. Rubber, plastic, glass and dry wood are insulators. Put an insulator in the loop and you have made a gap, even though the wire looks connected.</p>
+
+  <figure>
+    <div class="fig-label">Figure 3.2</div>
+    <svg viewBox="0 0 620 150" role="img" aria-label="Comparison of electrons in a conductor versus an insulator">
+      <!-- conductor -->
+      <rect x="40" y="40" width="230" height="62" rx="3" fill="none" stroke="var(--wire)" stroke-width="2.5"/>
+      <g fill="var(--copper)">
+        <circle cx="70" cy="58" r="5"/><circle cx="118" cy="80" r="5"/>
+        <circle cx="160" cy="55" r="5"/><circle cx="205" cy="78" r="5"/>
+        <circle cx="243" cy="60" r="5"/><circle cx="95" cy="88" r="5"/>
+        <circle cx="182" cy="90" r="5"/>
+      </g>
+      <g stroke="var(--copper)" stroke-width="2" stroke-linecap="round" marker-end="url(#ar)">
+        <line x1="78" y1="58" x2="100" y2="58"/>
+        <line x1="168" y1="55" x2="190" y2="55"/>
+        <line x1="126" y1="80" x2="148" y2="80"/>
+      </g>
+      <defs>
+        <marker id="ar" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 z" fill="var(--copper)"/>
+        </marker>
+      </defs>
+      <text x="155" y="126" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">CONDUCTOR</text>
+      <text x="155" y="28" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">electrons drift freely</text>
+
+      <!-- insulator -->
+      <rect x="350" y="40" width="230" height="62" rx="3" fill="none" stroke="var(--wire)" stroke-width="2.5"/>
+      <g fill="var(--ink-faint)">
+        <circle cx="380" cy="58" r="5"/><circle cx="428" cy="80" r="5"/>
+        <circle cx="470" cy="55" r="5"/><circle cx="515" cy="78" r="5"/>
+        <circle cx="553" cy="60" r="5"/><circle cx="405" cy="88" r="5"/>
+        <circle cx="492" cy="90" r="5"/>
+      </g>
+      <g stroke="var(--ink-faint)" stroke-width="1.8" opacity="0.75">
+        <circle cx="380" cy="58" r="11" fill="none"/>
+        <circle cx="470" cy="55" r="11" fill="none"/>
+        <circle cx="515" cy="78" r="11" fill="none"/>
+      </g>
+      <text x="465" y="126" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">INSULATOR</text>
+      <text x="465" y="28" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">electrons held in place</text>
+    </svg>
+    <figcaption>In a conductor the electrons are free to move along the material. In an insulator each electron stays locked near its own atom, so no current can pass.</figcaption>
+  </figure>
+
+  <div class="mistake">
+    <div class="mistake-tag">Commonly missed</div>
+    <p class="qtext">Points 1–8 sit on a board. Some are joined by <b>copper</b>, some by <b>iron</b>, one by <b>rubber</b>. Which connections will light the bulb?</p>
+    <p>The trap here is that all three <em>look</em> like connections. But copper and iron are metals — current passes. Rubber is an insulator — it is a gap wearing a disguise.</p>
+    <p><strong>How to work it:</strong> trace the loop with your finger. If your finger crosses the rubber link at any point, that path is dead, no matter how neat it looks.</p>
+  </div>
+</section>
+
+<!-- ============ 3.3 ============ -->
+<section>
+  <span class="sec-num">3.3</span>
+  <h2>Series and parallel</h2>
+
+  <p>Two bulbs can share a battery in two different ways, and the difference matters enormously.</p>
+
+  <p>In <strong>series</strong>, there is only one loop. The charge must pass through the first bulb and then the second. Both bulbs share the push from the battery, so each one gets less — both glow dim. And if one bulb burns out, the loop breaks and <em>both</em> go dark.</p>
+
+  <p>In <strong>parallel</strong>, the loop splits into two branches. Each bulb gets the full push of the battery, so each glows brightly. Remove one bulb and the other branch is still a complete loop — the second bulb keeps shining.</p>
+
+  <figure>
+    <div class="fig-label">Figure 3.3</div>
+    <svg viewBox="0 0 620 260" role="img" aria-label="Series circuit with two dim bulbs beside a parallel circuit with two bright bulbs">
+      <!-- ===== SERIES ===== -->
+      <text x="155" y="28" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="var(--ink)">SERIES</text>
+
+      <g fill="none" stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <!-- top edge, broken for two bulbs -->
+        <path d="M50 175 L50 80 L96 80"/>
+        <path d="M134 80 L176 80"/>
+        <path d="M214 80 L260 80 L260 175"/>
+        <!-- bottom edge, broken for battery -->
+        <path d="M50 175 L120 175"/>
+        <path d="M160 175 L260 175"/>
+      </g>
+      <!-- battery -->
+      <g stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="120" y1="161" x2="120" y2="189"/>
+        <line x1="133" y1="167" x2="133" y2="183"/>
+        <line x1="146" y1="161" x2="146" y2="189"/>
+        <line x1="160" y1="167" x2="160" y2="183"/>
+      </g>
+      <!-- two dim bulbs -->
+      <circle cx="115" cy="80" r="19" fill="var(--bulb-on)" opacity="0.4" stroke="var(--wire)" stroke-width="2.5"/>
+      <g stroke="var(--wire)" stroke-width="1.8" stroke-linecap="round">
+        <line x1="102" y1="67" x2="128" y2="93"/><line x1="128" y1="67" x2="102" y2="93"/>
+      </g>
+      <circle cx="195" cy="80" r="19" fill="var(--bulb-on)" opacity="0.4" stroke="var(--wire)" stroke-width="2.5"/>
+      <g stroke="var(--wire)" stroke-width="1.8" stroke-linecap="round">
+        <line x1="182" y1="67" x2="208" y2="93"/><line x1="208" y1="67" x2="182" y2="93"/>
+      </g>
+
+      <text x="155" y="222" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--ink-soft)">one loop · both dim</text>
+      <text x="155" y="243" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--wrong)">one fails → both die</text>
+
+      <!-- ===== PARALLEL ===== -->
+      <text x="465" y="28" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="var(--ink)">PARALLEL</text>
+
+      <g fill="none" stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <!-- left rail: from battery up to top branch -->
+        <path d="M375 175 L375 60"/>
+        <!-- right rail: from top branch down to battery -->
+        <path d="M555 60 L555 175"/>
+        <!-- top branch, broken for bulb -->
+        <path d="M375 60 L446 60"/>
+        <path d="M484 60 L555 60"/>
+        <!-- second branch, broken for bulb -->
+        <path d="M375 118 L446 118"/>
+        <path d="M484 118 L555 118"/>
+        <!-- bottom edge, broken for battery -->
+        <path d="M375 175 L435 175"/>
+        <path d="M475 175 L555 175"/>
+      </g>
+      <!-- junction dots where branches meet the rails -->
+      <g fill="var(--wire)">
+        <circle cx="375" cy="118" r="4"/>
+        <circle cx="555" cy="118" r="4"/>
+      </g>
+      <!-- battery -->
+      <g stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="435" y1="161" x2="435" y2="189"/>
+        <line x1="448" y1="167" x2="448" y2="183"/>
+        <line x1="461" y1="161" x2="461" y2="189"/>
+        <line x1="475" y1="167" x2="475" y2="183"/>
+      </g>
+      <!-- two bright bulbs, one per branch -->
+      <circle cx="465" cy="60" r="19" fill="var(--bulb-on)" stroke="var(--wire)" stroke-width="2.5"/>
+      <g stroke="var(--wire)" stroke-width="1.8" stroke-linecap="round">
+        <line x1="452" y1="47" x2="478" y2="73"/><line x1="478" y1="47" x2="452" y2="73"/>
+      </g>
+      <circle cx="465" cy="118" r="19" fill="var(--bulb-on)" stroke="var(--wire)" stroke-width="2.5"/>
+      <g stroke="var(--wire)" stroke-width="1.8" stroke-linecap="round">
+        <line x1="452" y1="105" x2="478" y2="131"/><line x1="478" y1="105" x2="452" y2="131"/>
+      </g>
+
+      <text x="465" y="222" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--ink-soft)">two branches · both bright</text>
+      <text x="465" y="243" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--correct)">one fails → other lives</text>
+    </svg>
+    <figcaption>The bulbs and the battery are identical in both circuits. Only the <b>wiring</b> is different — and that alone decides brightness and what happens when a bulb fails.</figcaption>
+  </figure>
+
+  <div class="keyidea">
+    <span class="kl">Why your house is wired in parallel</span>
+    <p>If your home were wired in series, switching off the kitchen light would switch off every light in the house. Parallel wiring is why one blown bulb doesn't darken every room.</p>
+  </div>
+</section>
+
+<!-- ============ 3.4 ============ -->
+<section>
+  <span class="sec-num">3.4</span>
+  <h2>Where the meters go</h2>
+
+  <p>This is the question you missed, and it catches almost everyone. The rule comes straight from what each meter measures.</p>
+
+  <p>An <strong>ammeter</strong> measures current — the charge flowing <em>through</em> a point. To measure what flows through something, the meter must sit <em>in</em> the loop so the same current passes through it. That means <strong>in series</strong>.</p>
+
+  <p>A <strong>voltmeter</strong> measures the push <em>across</em> a component — the difference between one side and the other. To compare two sides, it must touch both sides at once, bridging across. That means <strong>in parallel</strong>.</p>
+
+  <figure>
+    <div class="fig-label">Figure 3.4</div>
+    <svg viewBox="0 0 620 200" role="img" aria-label="Correct meter placement: ammeter in series in the loop, voltmeter in parallel across the bulb">
+      <g fill="none" stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <path d="M80 150 L80 70 L150 70"/>
+        <path d="M190 70 L260 70"/>
+        <path d="M300 70 L400 70 L400 150"/>
+        <path d="M80 150 L200 150"/>
+        <path d="M240 150 L400 150"/>
+      </g>
+      <!-- battery -->
+      <g stroke="var(--wire)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="200" y1="136" x2="200" y2="164"/>
+        <line x1="213" y1="142" x2="213" y2="158"/>
+        <line x1="226" y1="136" x2="226" y2="164"/>
+        <line x1="240" y1="142" x2="240" y2="158"/>
+      </g>
+      <!-- ammeter IN the loop -->
+      <circle cx="170" cy="70" r="20" fill="var(--card)" stroke="var(--copper)" stroke-width="3"/>
+      <text x="170" y="77" text-anchor="middle" font-family="Charter, Georgia, serif" font-size="19" font-weight="700" fill="var(--copper)">A</text>
+      <text x="170" y="36" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--copper)">in series</text>
+      <!-- bulb -->
+      <circle cx="280" cy="70" r="20" fill="var(--bulb-on)" stroke="var(--wire)" stroke-width="2.5"/>
+      <g stroke="var(--wire)" stroke-width="1.8" stroke-linecap="round">
+        <line x1="266" y1="56" x2="294" y2="84"/><line x1="294" y1="56" x2="266" y2="84"/>
+      </g>
+      <!-- voltmeter ACROSS the bulb -->
+      <g fill="none" stroke="var(--copper)" stroke-width="2.5" stroke-linecap="round">
+        <path d="M260 70 L260 122 L500 122 L500 70 L300 70"/>
+      </g>
+      <circle cx="500" cy="70" r="20" fill="var(--card)" stroke="var(--copper)" stroke-width="3"/>
+      <text x="500" y="77" text-anchor="middle" font-family="Charter, Georgia, serif" font-size="19" font-weight="700" fill="var(--copper)">V</text>
+      <text x="500" y="36" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--copper)">in parallel</text>
+      <circle cx="260" cy="70" r="4" fill="var(--copper)"/>
+      <circle cx="300" cy="70" r="4" fill="var(--copper)"/>
+      <text x="380" y="143" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">bridges across the bulb</text>
+    </svg>
+    <figcaption>The ammeter <b>A</b> sits inside the loop, so all the current runs through it. The voltmeter <b>V</b> bridges across the bulb, touching both sides at once.</figcaption>
+  </figure>
+
+  <div class="keyidea">
+    <span class="kl">Remember it this way</span>
+    <p><strong>A</strong>mmeter — <em>A</em>long the loop. <strong>V</strong>oltmeter — <em>V</em>aults over the component. If a diagram shows a voltmeter sitting in the loop like a bead on a string, it is wrong.</p>
+  </div>
+
+  <div class="mistake">
+    <div class="mistake-tag">Commonly missed</div>
+    <p class="qtext">Which circuit shows the correct way of connecting an ammeter and a voltmeter?</p>
+    <p><strong>How to eliminate fast:</strong> look only at the <b>V</b> first. Any option where the voltmeter sits inside the main loop is out immediately — you can reject two or three options in about five seconds. Then check that the <b>A</b> is in the loop, not bridging.</p>
+  </div>
+</section>
+
+<!-- ============ 3.5 ============ -->
+<section>
+  <span class="sec-num">3.5</span>
+  <h2>Resistance, without the algebra</h2>
+
+  <p><strong>Resistance</strong> is how much a component slows the flow of charge. A thin wire resists more than a thick one, in the same way a narrow doorway slows a crowd more than a wide one.</p>
+
+  <p>You do not need resistance formulas here. But you do need two facts you can reason out:</p>
+
+  <p><strong>More resistors in series → more total resistance.</strong> Every extra resistor is one more narrow doorway the charge must squeeze through, one after another.</p>
+
+  <p><strong>More resistors in parallel → less total resistance.</strong> This feels backwards until you picture it: adding a parallel branch is opening a second doorway beside the first. More ways through means an easier journey overall.</p>
+
+  <figure>
+    <div class="fig-label">Figure 3.5</div>
+    <svg viewBox="0 0 620 170" role="img" aria-label="Doorway analogy: doorways in a row versus doorways side by side">
+      <!-- series doorways -->
+      <g stroke="var(--wire)" stroke-width="2.5" fill="none">
+        <rect x="60" y="52" width="16" height="56"/>
+        <rect x="130" y="52" width="16" height="56"/>
+        <rect x="200" y="52" width="16" height="56"/>
+      </g>
+      <g stroke="var(--copper)" stroke-width="2.2" stroke-linecap="round" marker-end="url(#ar2)">
+        <line x1="30" y1="80" x2="52" y2="80"/>
+        <line x1="84" y1="80" x2="122" y2="80"/>
+        <line x1="154" y1="80" x2="192" y2="80"/>
+        <line x1="224" y1="80" x2="248" y2="80"/>
+      </g>
+      <defs>
+        <marker id="ar2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 z" fill="var(--copper)"/>
+        </marker>
+      </defs>
+      <text x="140" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">SERIES</text>
+      <text x="140" y="140" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--ink-soft)">doors in a row</text>
+      <text x="140" y="158" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--wrong)">harder → R increases</text>
+
+      <!-- parallel doorways -->
+      <g stroke="var(--wire)" stroke-width="2.5" fill="none">
+        <rect x="430" y="34" width="16" height="34"/>
+        <rect x="430" y="92" width="16" height="34"/>
+      </g>
+      <g stroke="var(--copper)" stroke-width="2.2" stroke-linecap="round" marker-end="url(#ar2)">
+        <line x1="370" y1="51" x2="422" y2="51"/>
+        <line x1="370" y1="109" x2="422" y2="109"/>
+        <line x1="454" y1="51" x2="506" y2="51"/>
+        <line x1="454" y1="109" x2="506" y2="109"/>
+      </g>
+      <text x="438" y="20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">PARALLEL</text>
+      <text x="438" y="150" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--ink-soft)">doors side by side</text>
+      <text x="438" y="168" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="var(--correct)">easier → R decreases</text>
+    </svg>
+    <figcaption>Doorways one after another make the journey harder. Doorways beside each other make it easier — even though you added a doorway in both cases.</figcaption>
+  </figure>
+
+  <div class="mistake">
+    <div class="mistake-tag">Commonly missed</div>
+    <p class="qtext">Given three resistors with different values, which arrangement produces the <b>maximum</b> equivalent resistance?</p>
+    <p>Straight from the rule above: series adds up, parallel cuts down. For the largest total, everything must be in series.</p>
+    <p><strong>Answer: (B) arrange all resistors in series.</strong> You never need to calculate a single number — the reasoning alone gets you there.</p>
+  </div>
+</section>
+
+<!-- ============ Section B strategy ============ -->
+<section>
+  <span class="sec-num">3.6</span>
+  <h2>Section B: the shortcut worth memorising</h2>
+
+  <div class="strategy">
+    <p>In this question format you get three statements and must decide which are correct. Only these four options are ever offered:</p>
+    <div class="tbl-scroll">
+      <table>
+        <tr><th>Option</th><th>Means</th></tr>
+        <tr><td class="opt">A</td><td>1, 2 and 3 are correct</td></tr>
+        <tr><td class="opt">B</td><td>1 and 2 only</td></tr>
+        <tr><td class="opt">C</td><td>2 and 3 only</td></tr>
+        <tr><td class="opt">D</td><td>1 only</td></tr>
+      </table>
+    </div>
+    <p><strong>Notice what is missing:</strong> there is no "2 only", no "3 only", no "1 and 3". So statement 1 does most of the work for you.</p>
+    <div class="tbl-scroll">
+      <table>
+        <tr><th>If statement 1 is…</th><th>Then…</th></tr>
+        <tr><td class="opt">wrong</td><td><strong>The answer is C.</strong> You can stop reading.</td></tr>
+        <tr><td class="opt">right</td><td>Check statement 3 → correct means <b>A</b>, wrong means <b>B</b> or <b>D</b></td></tr>
+      </table>
+    </div>
+    <p>This section is worth 2 marks per question, so it carries far more weight than its length suggests. There is no penalty for a wrong answer — never leave one blank.</p>
+  </div>
+</section>
+
+<!-- ============ Questions ============ -->
+<section>
+  <span class="sec-num">3.7</span>
+  <h2>Think and Explain</h2>
+  <p>Answer these out loud, in full sentences, before opening the answer.</p>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">1</span>
+      <p class="q-text">A torch stops working. The bulb is fine and the batteries are new. Give two other things that could break the circuit.</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>The switch may be faulty, so the loop never closes. A metal contact inside may be dirty, corroded or bent away from the battery, leaving a gap. A spring or connecting strip may have come loose.</p>
+        <p>All of these are the same idea in different clothing: <strong>the loop is not complete</strong>.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">2</span>
+      <p class="q-text">Two identical bulbs are in series. A third identical bulb is added, still in series. What happens to the brightness of the original two, and why?</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>They get <strong>dimmer</strong>.</p>
+        <p>Adding another bulb in series adds more resistance to the single loop, so less current flows. On top of that, the battery's push is now shared between three bulbs instead of two, so each one receives a smaller share of the energy.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">3</span>
+      <p class="q-text">Why would it be a serious mistake to connect an ammeter across a bulb, the way a voltmeter is connected?</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>An ammeter is built to have almost no resistance, because it must not disturb the current it is measuring. Connecting it across the bulb gives the charge a nearly free path that bypasses the bulb entirely.</p>
+        <p>The result: the bulb dims or goes out, a very large current flows through the meter, and the ammeter can be damaged.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">4</span>
+      <p class="q-text">A string of decorative lights is wired in series. One bulb burns out and the whole string goes dark. Explain why, and suggest how the manufacturer could prevent it.</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>In series there is only one loop. A burnt-out bulb is a break in that loop, so current stops everywhere and every bulb goes dark.</p>
+        <p>The fix is to wire the lights <strong>in parallel</strong>. Each bulb then sits on its own branch, and a failed bulb only breaks its own branch — the rest stay lit.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ Section B practice ============ -->
+<section>
+  <span class="sec-num">3.8</span>
+  <h2>Section B practice</h2>
+  <p>Use the shortcut from 3.6. Judge statement 1 first.</p>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">1</span>
+      <div>
+        <p class="q-text">Two identical bulbs are connected in parallel to a battery. Which statements are correct?</p>
+        <ul class="stmts">
+          <li><span class="sn">1</span><span>Each bulb receives the full voltage of the battery.</span></li>
+          <li><span class="sn">2</span><span>If one bulb is removed, the other goes out.</span></li>
+          <li><span class="sn">3</span><span>The bulbs are brighter than the same two bulbs in series.</span></li>
+        </ul>
+        <div class="opts"><span>A · 1,2,3</span><span>B · 1,2</span><span>C · 2,3</span><span>D · 1 only</span></div>
+      </div>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p><span class="ans-badge">Answer: D</span></p>
+        <p><strong>Statement 1 — correct.</strong> In parallel, each branch is connected straight across the battery, so each bulb gets the full voltage. Since 1 is right, the answer must be A, B or D.</p>
+        <p><strong>Statement 2 — wrong.</strong> This is the whole point of parallel wiring. Removing one bulb leaves the other branch a complete loop, so it stays lit. That rules out A and B.</p>
+        <p><strong>Statement 3 — correct</strong>, but by now it doesn't matter. With 1 right and 2 wrong, only D remains.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">2</span>
+      <div>
+        <p class="q-text">A student sets up a circuit to measure the current through a bulb and the voltage across it. Which statements are correct?</p>
+        <ul class="stmts">
+          <li><span class="sn">1</span><span>The voltmeter should be connected in series with the bulb.</span></li>
+          <li><span class="sn">2</span><span>The ammeter should be connected in series with the bulb.</span></li>
+          <li><span class="sn">3</span><span>The voltmeter should be connected across the bulb.</span></li>
+        </ul>
+        <div class="opts"><span>A · 1,2,3</span><span>B · 1,2</span><span>C · 2,3</span><span>D · 1 only</span></div>
+      </div>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p><span class="ans-badge">Answer: C</span></p>
+        <p><strong>Statement 1 — wrong.</strong> A voltmeter goes across, never in the loop. And the moment statement 1 is wrong, the answer is <strong>C</strong> — no other option is possible.</p>
+        <p>You could stop right there. But checking: statement 2 is correct (ammeters go in series) and statement 3 is correct (voltmeters go across). Both consistent with C.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">3</span>
+      <div>
+        <p class="q-text">A circuit contains a battery, a switch and a bulb, all in one loop. The switch is opened. Which statements are correct?</p>
+        <ul class="stmts">
+          <li><span class="sn">1</span><span>The bulb goes out.</span></li>
+          <li><span class="sn">2</span><span>Current still flows in the part of the circuit before the switch.</span></li>
+          <li><span class="sn">3</span><span>The circuit is now an open circuit.</span></li>
+        </ul>
+        <div class="opts"><span>A · 1,2,3</span><span>B · 1,2</span><span>C · 2,3</span><span>D · 1 only</span></div>
+      </div>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p><span class="ans-badge">Answer: D</span></p>
+        <p><strong>Statement 1 — correct.</strong> Breaking the loop stops the current, so the bulb goes out. Answer is A, B or D.</p>
+        <p><strong>Statement 2 — wrong.</strong> This is the classic misunderstanding. Current does not "pile up" before a gap and keep flowing there. A break stops the flow <em>everywhere</em> in the loop at once. That eliminates A and B.</p>
+        <p><strong>Statement 3 — correct</strong>, but D is already forced.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ recap ============ -->
+<section class="recap">
+  <h2>Before you move on</h2>
+  <p>Can you answer each of these without looking back?</p>
+  <ul>
+    <li><span class="ck">01</span><span>Why does a break anywhere in a series loop stop the current everywhere?</span></li>
+    <li><span class="ck">02</span><span>What makes a metal a conductor and rubber an insulator?</span></li>
+    <li><span class="ck">03</span><span>Why do parallel bulbs stay bright when one is removed?</span></li>
+    <li><span class="ck">04</span><span>Where does an ammeter go, and where does a voltmeter go — and why?</span></li>
+    <li><span class="ck">05</span><span>Why does adding resistors in parallel <em>lower</em> the total resistance?</span></li>
+    <li><span class="ck">06</span><span>In Section B, what do you know instantly if statement 1 is wrong?</span></li>
+  </ul>
+
+  <p class="footer-note">Companion reading: Hewitt, <em>Conceptual Physics</em>, Ch 23 (pp. 488–511). Companion simulation: PhET Circuit Construction Kit DC.</p>
+</section>
+
+</div>
