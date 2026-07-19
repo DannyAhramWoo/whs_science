@@ -1,4 +1,4 @@
-<title>Physics Notes</title>
+<title>Science Notes</title>
 
 <style>
 :root {
@@ -11,6 +11,14 @@
   --copper-soft: #F0E2D4;
   --card: #FFFFFF;
   --done: #2E7D4F;
+  --done-soft: #E3F0E7;
+
+  --phys: #B4632A;
+  --earth: #2F6B8F;
+  --chem: #6B4E9B;
+  --bio: #2E7D4F;
+  --gen: #9B5B2E;
+
   --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
   --sans: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
@@ -19,18 +27,21 @@
   :root {
     --paper: #16181B; --ink: #E8E4DC; --ink-soft: #A8ACB2; --ink-faint: #71767D;
     --rule: #2E3237; --copper: #E08A44; --copper-soft: #33241A; --card: #1D2024;
-    --done: #5BBE85;
+    --done: #5BBE85; --done-soft: #17281E;
+    --phys: #E08A44; --earth: #6FA8CC; --chem: #A98BD4; --bio: #5BBE85; --gen: #D19257;
   }
 }
 :root[data-theme="dark"] {
   --paper: #16181B; --ink: #E8E4DC; --ink-soft: #A8ACB2; --ink-faint: #71767D;
   --rule: #2E3237; --copper: #E08A44; --copper-soft: #33241A; --card: #1D2024;
-  --done: #5BBE85;
+  --done: #5BBE85; --done-soft: #17281E;
+  --phys: #E08A44; --earth: #6FA8CC; --chem: #A98BD4; --bio: #5BBE85; --gen: #D19257;
 }
 :root[data-theme="light"] {
   --paper: #FAF8F3; --ink: #1C1E21; --ink-soft: #55595F; --ink-faint: #8A8F96;
   --rule: #DDD8CC; --copper: #B4632A; --copper-soft: #F0E2D4; --card: #FFFFFF;
-  --done: #2E7D4F;
+  --done: #2E7D4F; --done-soft: #E3F0E7;
+  --phys: #B4632A; --earth: #2F6B8F; --chem: #6B4E9B; --bio: #2E7D4F; --gen: #9B5B2E;
 }
 
 body {
@@ -38,9 +49,9 @@ body {
   font-family: var(--sans); font-size: 17px; line-height: 1.6;
   margin: 0; padding: 0 20px 80px;
 }
-.wrap { max-width: 660px; margin: 0 auto; }
+.wrap { max-width: 700px; margin: 0 auto; }
 
-header { padding: 60px 0 30px; border-bottom: 2px solid var(--ink); margin-bottom: 36px; }
+header { padding: 60px 0 30px; border-bottom: 2px solid var(--ink); margin-bottom: 30px; }
 .eyebrow {
   font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--copper); margin: 0 0 14px;
@@ -52,53 +63,79 @@ h1 {
 }
 .sub { font-size: 17.5px; color: var(--ink-soft); margin: 0; max-width: 56ch; }
 
-h2 {
-  font-family: var(--serif); font-size: 22px; font-weight: 600;
-  margin: 40px 0 14px;
+.progress {
+  display: flex; align-items: baseline; gap: 10px;
+  font-family: var(--mono); font-size: 13px;
+  color: var(--ink-soft); margin-top: 22px;
 }
+.bar {
+  flex: 1; height: 6px; background: var(--rule);
+  border-radius: 3px; overflow: hidden; max-width: 220px;
+}
+.bar i { display: block; height: 100%; background: var(--done); width: 15%; }
 
-.ch-list { display: flex; flex-direction: column; gap: 10px; }
+.unit { margin: 38px 0 0; }
+.unit-head {
+  display: flex; align-items: baseline; gap: 12px;
+  padding-bottom: 8px; margin-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.unit-name {
+  font-family: var(--serif); font-size: 22px; font-weight: 600;
+}
+.unit-count {
+  font-family: var(--mono); font-size: 12px; color: var(--ink-faint);
+  margin-left: auto;
+}
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.u-phys .dot { background: var(--phys); }
+.u-earth .dot { background: var(--earth); }
+.u-chem .dot { background: var(--chem); }
+.u-bio .dot { background: var(--bio); }
+.u-gen .dot { background: var(--gen); }
+
+.ch-list { display: flex; flex-direction: column; gap: 8px; }
+
+a.ch, .planned {
+  display: flex; align-items: baseline; gap: 13px;
+  padding: 14px 16px; border-radius: 3px;
+}
 a.ch {
-  display: flex; align-items: baseline; gap: 14px;
-  padding: 16px 18px; background: var(--card);
-  border: 1px solid var(--rule); border-radius: 3px;
+  background: var(--card); border: 1px solid var(--rule);
   text-decoration: none; color: var(--ink);
   transition: border-color 0.15s, transform 0.15s;
 }
 a.ch:hover { border-color: var(--copper); transform: translateX(2px); }
 a.ch:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
-.ch-num {
-  font-family: var(--mono); font-size: 13px; color: var(--copper);
-  font-weight: 600; flex-shrink: 0; min-width: 22px;
-}
-.ch-body { flex: 1; }
-.ch-title { font-weight: 700; font-size: 17px; display: block; margin-bottom: 3px; }
-.ch-desc { font-size: 14.5px; color: var(--ink-soft); display: block; }
-.ch-tag {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--done);
-  background: var(--copper-soft); padding: 3px 8px; border-radius: 2px;
-  flex-shrink: 0;
-}
+.planned { border: 1px dashed var(--rule); color: var(--ink-faint); }
 
-.planned {
-  display: flex; align-items: baseline; gap: 14px;
-  padding: 15px 18px; border: 1px dashed var(--rule);
-  border-radius: 3px; color: var(--ink-faint);
+.ch-num {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  flex-shrink: 0; min-width: 20px; color: var(--copper);
 }
 .planned .ch-num { color: var(--ink-faint); }
-.planned .ch-title { font-weight: 600; color: var(--ink-faint); }
+.ch-body { flex: 1; }
+.ch-title { font-weight: 700; font-size: 16.5px; display: block; margin-bottom: 2px; }
+.planned .ch-title { font-weight: 600; }
+.ch-desc { font-size: 14px; color: var(--ink-soft); display: block; line-height: 1.45; }
+.planned .ch-desc { color: var(--ink-faint); }
+.ch-tag {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--done);
+  background: var(--done-soft); padding: 3px 8px; border-radius: 2px;
+  flex-shrink: 0; align-self: center;
+}
 
 .note {
   background: var(--card); border-left: 3px solid var(--copper);
-  padding: 16px 20px; margin: 30px 0; border-radius: 0 3px 3px 0;
+  padding: 16px 20px; margin: 34px 0; border-radius: 0 3px 3px 0;
   font-size: 16px;
 }
 .note p { margin: 0 0 10px; }
 .note p:last-child { margin: 0; }
 
 footer {
-  margin-top: 50px; padding-top: 20px;
+  margin-top: 46px; padding-top: 20px;
   border-top: 1px solid var(--rule);
   font-size: 14px; color: var(--ink-faint);
 }
@@ -108,86 +145,259 @@ footer {
 <div class="wrap">
 
 <header>
-  <p class="eyebrow">Concept Physics</p>
-  <h1>Physics Notes</h1>
-  <p class="sub">A concept-first physics book for upper primary. Each chapter starts from what something actually is, not from formulas.</p>
+  <p class="eyebrow">Concept Science</p>
+  <h1>Science Notes</h1>
+  <p class="sub">A concept-first science book for upper primary. Each chapter starts from what something actually is, not from formulas.</p>
+  <div class="progress">
+    <span>3 of 20 ready</span>
+    <span class="bar"><i></i></span>
+  </div>
 </header>
 
-<h2>Chapters</h2>
-<div class="ch-list">
-
-  <a class="ch" href="ch3-electric-circuits.html">
-    <span class="ch-num">3</span>
-    <span class="ch-body">
-      <span class="ch-title">Electric Circuits</span>
-      <span class="ch-desc">Closed loops, conductors, series and parallel, where the meters go</span>
-    </span>
-    <span class="ch-tag">Ready</span>
-  </a>
-
-  <div class="planned">
-    <span class="ch-num">1</span>
-    <span class="ch-body">
-      <span class="ch-title">Forces and Friction</span>
-      <span class="ch-desc">Contact and non-contact forces, balanced and unbalanced</span>
-    </span>
+<!-- ===== PHYSICS ===== -->
+<div class="unit u-phys">
+  <div class="unit-head">
+    <span class="dot"></span>
+    <span class="unit-name">Physics</span>
+    <span class="unit-count">7 chapters</span>
   </div>
+  <div class="ch-list">
 
-  <div class="planned">
-    <span class="ch-num">2</span>
-    <span class="ch-body">
-      <span class="ch-title">Mass and Weight</span>
-      <span class="ch-desc">Why mass stays the same on the Moon but weight does not</span>
-    </span>
+    <a class="ch" href="ch1-forces-friction.html">
+      <span class="ch-num">1</span>
+      <span class="ch-body">
+        <span class="ch-title">Forces and Friction</span>
+        <span class="ch-desc">Contact and non-contact forces, balanced and unbalanced, what a force does</span>
+      </span>
+      <span class="ch-tag">Ready</span>
+    </a>
+
+    <a class="ch" href="ch2-mass-weight.html">
+      <span class="ch-num">2</span>
+      <span class="ch-body">
+        <span class="ch-title">Mass and Weight</span>
+        <span class="ch-desc">Gravity, why mass stays the same on the Moon but weight does not</span>
+      </span>
+      <span class="ch-tag">Ready</span>
+    </a>
+
+    <a class="ch" href="ch3-electric-circuits.html">
+      <span class="ch-num">3</span>
+      <span class="ch-body">
+        <span class="ch-title">Electric Circuits</span>
+        <span class="ch-desc">Closed loops, conductors, series and parallel, where the meters go</span>
+      </span>
+      <span class="ch-tag">Ready</span>
+    </a>
+
+    <div class="planned">
+      <span class="ch-num">4</span>
+      <span class="ch-body">
+        <span class="ch-title">Magnetism</span>
+        <span class="ch-desc">Poles, magnetic materials, electromagnets and how to strengthen them</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">5</span>
+      <span class="ch-body">
+        <span class="ch-title">Floating, Sinking and Density</span>
+        <span class="ch-desc">Upthrust, why heavy ships float, comparing densities</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">6</span>
+      <span class="ch-body">
+        <span class="ch-title">Heat and Temperature</span>
+        <span class="ch-desc">Conduction, convection, radiation, expansion, thermal equilibrium</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">7</span>
+      <span class="ch-body">
+        <span class="ch-title">Light, Sound and Colour</span>
+        <span class="ch-desc">Reflection, refraction, filters, how we see colour, pitch and loudness</span>
+      </span>
+    </div>
+
   </div>
+</div>
 
-  <div class="planned">
-    <span class="ch-num">4</span>
-    <span class="ch-body">
-      <span class="ch-title">Magnetism</span>
-      <span class="ch-desc">Poles, magnetic materials, electromagnets</span>
-    </span>
+<!-- ===== ENERGY ===== -->
+<div class="unit u-phys">
+  <div class="unit-head">
+    <span class="dot"></span>
+    <span class="unit-name">Energy</span>
+    <span class="unit-count">2 chapters</span>
   </div>
+  <div class="ch-list">
 
-  <div class="planned">
-    <span class="ch-num">5</span>
-    <span class="ch-body">
-      <span class="ch-title">Floating and Density</span>
-      <span class="ch-desc">Upthrust, why heavy ships float, density comparisons</span>
-    </span>
+    <div class="planned">
+      <span class="ch-num">8</span>
+      <span class="ch-body">
+        <span class="ch-title">Energy and Its Changes</span>
+        <span class="ch-desc">Kinetic and potential energy, energy conversions, work done</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">9</span>
+      <span class="ch-body">
+        <span class="ch-title">Where Energy Comes From</span>
+        <span class="ch-desc">Renewable and non-renewable sources, solar cells, fuels</span>
+      </span>
+    </div>
+
   </div>
+</div>
 
-  <div class="planned">
-    <span class="ch-num">6</span>
-    <span class="ch-body">
-      <span class="ch-title">Heat Transfer</span>
-      <span class="ch-desc">Conduction, convection, radiation, thermal equilibrium</span>
-    </span>
+<!-- ===== EARTH ===== -->
+<div class="unit u-earth">
+  <div class="unit-head">
+    <span class="dot"></span>
+    <span class="unit-name">Earth and Space</span>
+    <span class="unit-count">4 chapters</span>
   </div>
+  <div class="ch-list">
 
-  <div class="planned">
-    <span class="ch-num">7</span>
-    <span class="ch-body">
-      <span class="ch-title">Light and Colour</span>
-      <span class="ch-desc">Reflection, refraction, filters, how we see colour</span>
-    </span>
+    <div class="planned">
+      <span class="ch-num">10</span>
+      <span class="ch-body">
+        <span class="ch-title">Earth, Moon and Sun</span>
+        <span class="ch-desc">Rotation, orbits, day and night, solar and lunar eclipses</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">11</span>
+      <span class="ch-body">
+        <span class="ch-title">Seasons, Climate and Wind</span>
+        <span class="ch-desc">Why seasons happen, the tilted axis, weather and wind patterns</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">12</span>
+      <span class="ch-body">
+        <span class="ch-title">The Planet Earth</span>
+        <span class="ch-desc">Structure and surface, rocks and the rock cycle, the atmosphere</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">13</span>
+      <span class="ch-body">
+        <span class="ch-title">Cycles and the Environment</span>
+        <span class="ch-desc">Water cycle, carbon cycle, pollution, deforestation, natural resources</span>
+      </span>
+    </div>
+
   </div>
+</div>
 
+<!-- ===== CHEMISTRY ===== -->
+<div class="unit u-chem">
+  <div class="unit-head">
+    <span class="dot"></span>
+    <span class="unit-name">Matter</span>
+    <span class="unit-count">2 chapters</span>
+  </div>
+  <div class="ch-list">
+
+    <div class="planned">
+      <span class="ch-num">14</span>
+      <span class="ch-body">
+        <span class="ch-title">Properties of Matter</span>
+        <span class="ch-desc">Solids, liquids and gases, the particle model, density, mixtures and solutions</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">15</span>
+      <span class="ch-body">
+        <span class="ch-title">Changes in Matter</span>
+        <span class="ch-desc">Melting, boiling, evaporation, physical versus chemical change</span>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== BIOLOGY ===== -->
+<div class="unit u-bio">
+  <div class="unit-head">
+    <span class="dot"></span>
+    <span class="unit-name">Living Things</span>
+    <span class="unit-count">4 chapters</span>
+  </div>
+  <div class="ch-list">
+
+    <div class="planned">
+      <span class="ch-num">16</span>
+      <span class="ch-body">
+        <span class="ch-title">Photosynthesis and Respiration</span>
+        <span class="ch-desc">How plants make food, how living things release energy from it</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">17</span>
+      <span class="ch-body">
+        <span class="ch-title">The Human Body</span>
+        <span class="ch-desc">Digestive, circulatory, respiratory and skeletal systems, and related illnesses</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">18</span>
+      <span class="ch-body">
+        <span class="ch-title">Sorting Living Things</span>
+        <span class="ch-desc">Classification, keys, vertebrates and invertebrates, plant groups</span>
+      </span>
+    </div>
+
+    <div class="planned">
+      <span class="ch-num">19</span>
+      <span class="ch-body">
+        <span class="ch-title">Ecosystems</span>
+        <span class="ch-desc">Habitats, food chains and webs, populations, adaptation, life cycles</span>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== GENERAL ===== -->
+<div class="unit u-gen">
+  <div class="unit-head">
+    <span class="dot"></span>
+    <span class="unit-name">Working Scientifically</span>
+    <span class="unit-count">1 chapter</span>
+  </div>
+  <div class="ch-list">
+
+    <div class="planned">
+      <span class="ch-num">20</span>
+      <span class="ch-body">
+        <span class="ch-title">How Scientists Work</span>
+        <span class="ch-desc">Hypotheses, fair tests, variables, reading tables and graphs, accuracy</span>
+      </span>
+    </div>
+
+  </div>
 </div>
 
 <div class="note">
-  <p><strong>How to use this book.</strong> Read the concept, study the diagram, then answer the Think and Explain questions <em>out loud</em> before opening the answer. Saying it in full sentences is the test — recognising the answer is not the same as knowing it.</p>
+  <p><strong>How to use this book.</strong> Read the concept, study the diagram, then answer the Think and Explain questions <em>out loud</em> before opening the answer. Saying it in full sentences is the test — recognising an answer is not the same as knowing it.</p>
   <p>The multi-statement practice matters more than it looks: those questions carry double marks.</p>
 </div>
 
-<h2>Companion material</h2>
-<div class="note">
-  <p><strong>Hewitt, <em>Conceptual Physics</em></strong> — read alongside each chapter. Do the <em>Think and Explain</em> questions at the end; skip <em>Think and Solve</em>, which is calculation practice you do not need yet.</p>
-  <p><strong>PhET simulations</strong> — build the circuit, watch the bulbs, then come back to the diagram. Concepts stick far better after you have moved something with your own hands.</p>
-</div>
-
 <footer>
-  Concept-first chapters for upper primary physics.
+  Concept-first chapters for upper primary science. Companion reading: Hewitt,
+  <em>Conceptual Physics</em>; Suchocki, <em>Conceptual Chemistry</em>; Campbell &amp;
+  Reece, <em>Essential Biology</em>. Companion simulations: PhET and Earth Space Lab.
 </footer>
 
 </div>
