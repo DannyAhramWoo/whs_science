@@ -1,0 +1,534 @@
+<title>Light, Sound and Colour — Science Notes</title>
+<link rel="stylesheet" href="shared.css">
+
+<div class="wrap">
+
+<a class="backlink" href="index.html">← All chapters</a>
+
+<header class="chapter-head">
+  <p class="eyebrow">Chapter 7</p>
+  <h1>Light, Sound and Colour</h1>
+  <p class="standfirst">Light and sound are both ways energy travels, and they behave in almost opposite ways. The single biggest mistake is treating them as the same kind of thing — light can cross empty space, sound cannot.</p>
+</header>
+
+<!-- 7.1 -->
+<section>
+  <span class="sec-num">7.1</span>
+  <h2>Light travels in straight lines</h2>
+
+  <p>Light travels in <strong>straight lines</strong>. It does not curve round corners on its own. Everything in this section follows from that one fact.</p>
+
+  <p>A <strong>shadow</strong> forms when something blocks the light. The light that would have reached that patch of wall was stopped, and because light cannot bend round the blocker, nothing arrives to replace it. The shadow is simply the shape of the missing light.</p>
+
+  <p>Materials are sorted by how much light they let through. A <strong>transparent</strong> material lets nearly all the light straight through, so you can see clearly through it — clear glass, still water. A <strong>translucent</strong> material lets some light through but scatters it, so you see a blur of light but no sharp shape — frosted glass, tracing paper, a plastic milk bottle. An <strong>opaque</strong> material lets none through — wood, metal, a book. Only opaque objects make a full dark shadow.</p>
+
+  <figure>
+    <div class="fig-label">Figure 7.1</div>
+    <svg viewBox="0 0 620 230" role="img" aria-label="Straight rays of light from a lamp blocked by an opaque object, forming a shadow on a screen">
+      <defs>
+        <marker id="m1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="var(--copper)"/>
+        </marker>
+      </defs>
+
+      <!-- lamp -->
+      <circle cx="70" cy="105" r="16" fill="none" stroke="var(--wire)" stroke-width="2.5"/>
+      <circle cx="70" cy="105" r="6" fill="var(--bulb-on)"/>
+
+      <!-- rays, all straight -->
+      <line x1="92" y1="105" x2="240" y2="42" stroke="var(--copper)" stroke-width="2.2" marker-end="url(#m1)"/>
+      <line x1="92" y1="105" x2="240" y2="76" stroke="var(--copper)" stroke-width="2.2" marker-end="url(#m1)"/>
+      <line x1="92" y1="105" x2="240" y2="134" stroke="var(--copper)" stroke-width="2.2" marker-end="url(#m1)"/>
+      <line x1="92" y1="105" x2="240" y2="168" stroke="var(--copper)" stroke-width="2.2" marker-end="url(#m1)"/>
+
+      <!-- rays that pass above and below the blocker, continuing to the screen -->
+      <line x1="256" y1="40" x2="470" y2="36" stroke="var(--copper)" stroke-width="2.2"/>
+      <line x1="256" y1="170" x2="470" y2="174" stroke="var(--copper)" stroke-width="2.2"/>
+
+      <!-- opaque blocker -->
+      <rect x="252" y="78" width="20" height="54" fill="var(--wire)"/>
+
+      <!-- screen -->
+      <line x1="470" y1="20" x2="470" y2="190" stroke="var(--wire)" stroke-width="3"/>
+      <!-- shadow band on screen -->
+      <rect x="462" y="72" width="16" height="66" fill="var(--ink)" opacity="0.75"/>
+
+      <!-- labels on one y-band -->
+      <text x="70" y="212" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">lamp</text>
+      <text x="262" y="212" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">opaque object</text>
+      <text x="500" y="212" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">shadow on screen</text>
+    </svg>
+    <figcaption>Every ray is a straight line. The rays that miss the object carry straight on to the screen; the ones that hit it stop. <b>The shadow is where no light could arrive</b>, not something the object sends out.</figcaption>
+  </figure>
+
+  <div class="keyidea">
+    <span class="kl">Why shadows exist</span>
+    <p>A shadow forms because light <strong>cannot bend round</strong> an opaque object. If light could curve, there would be no shadows at all.</p>
+  </div>
+</section>
+
+<!-- 7.2 -->
+<section>
+  <span class="sec-num">7.2</span>
+  <h2>Reflection and mirror images</h2>
+
+  <p>When light hits a smooth surface it bounces off. This is <strong>reflection</strong>. The <strong>law of reflection</strong> says the angle the light arrives at equals the angle it leaves at, measured from a line drawn at right angles to the mirror.</p>
+
+  <p>A flat mirror is called a <strong>plane mirror</strong>, and the image it makes follows four rules every time:</p>
+
+  <p>The image is the <strong>same size</strong> as the object. It is the <strong>same distance behind</strong> the mirror as the object is in front. It is <strong>laterally inverted</strong> — left and right are swapped, which is why the word AMBULANCE is printed back-to-front on the front of the vehicle so a driver reads it correctly in a rear-view mirror. And it is a <strong>virtual image</strong>: the light does not actually go behind the mirror, so you could not catch the image on a screen held there.</p>
+
+  <figure>
+    <div class="fig-label">Figure 7.2</div>
+    <svg viewBox="0 0 620 240" role="img" aria-label="An object 30 centimetres in front of a plane mirror and its image 30 centimetres behind, giving a 60 centimetre separation">
+      <defs>
+        <marker id="m2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="var(--ink-soft)"/>
+        </marker>
+        <marker id="m3" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto">
+          <path d="M8,0 L0,4 L8,8 z" fill="var(--ink-soft)"/>
+        </marker>
+        <marker id="m4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="var(--copper)"/>
+        </marker>
+        <marker id="m5" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto">
+          <path d="M8,0 L0,4 L8,8 z" fill="var(--copper)"/>
+        </marker>
+      </defs>
+
+      <!-- mirror -->
+      <line x1="310" y1="24" x2="310" y2="150" stroke="var(--wire)" stroke-width="4"/>
+      <g stroke="var(--ink-faint)" stroke-width="1.6">
+        <line x1="310" y1="32" x2="320" y2="24"/><line x1="310" y1="50" x2="320" y2="42"/>
+        <line x1="310" y1="68" x2="320" y2="60"/><line x1="310" y1="86" x2="320" y2="78"/>
+        <line x1="310" y1="104" x2="320" y2="96"/><line x1="310" y1="122" x2="320" y2="114"/>
+        <line x1="310" y1="140" x2="320" y2="132"/>
+      </g>
+
+      <!-- object: an F shape, real -->
+      <g stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round">
+        <line x1="160" y1="52" x2="160" y2="118"/>
+        <line x1="160" y1="52" x2="200" y2="52"/>
+        <line x1="160" y1="82" x2="190" y2="82"/>
+      </g>
+
+      <!-- image: mirrored F, dashed = virtual -->
+      <g stroke="var(--ink-faint)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="6 4">
+        <line x1="460" y1="52" x2="460" y2="118"/>
+        <line x1="460" y1="52" x2="420" y2="52"/>
+        <line x1="460" y1="82" x2="430" y2="82"/>
+      </g>
+
+      <!-- distance bars -->
+      <line x1="160" y1="176" x2="310" y2="176" stroke="var(--ink-soft)" stroke-width="2" marker-start="url(#m3)" marker-end="url(#m2)"/>
+      <line x1="310" y1="176" x2="460" y2="176" stroke="var(--ink-soft)" stroke-width="2" marker-start="url(#m3)" marker-end="url(#m2)"/>
+      <text x="235" y="168" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">30 cm</text>
+      <text x="385" y="168" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">30 cm</text>
+
+      <!-- total -->
+      <line x1="160" y1="206" x2="460" y2="206" stroke="var(--copper)" stroke-width="2.5" marker-start="url(#m5)" marker-end="url(#m4)"/>
+      <text x="310" y="232" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="var(--copper)">object to image = 60 cm</text>
+
+      <!-- top labels -->
+      <text x="160" y="18" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">object</text>
+      <text x="460" y="18" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" fill="var(--ink-soft)">image (virtual)</text>
+    </svg>
+    <figcaption>The image is the same size, the same distance behind the mirror, and flipped left to right. <b>The gap from object to image is 30 + 30 = 60 cm — twice the distance to the mirror.</b></figcaption>
+  </figure>
+
+  <div class="mistake">
+    <div class="mistake-tag">Commonly missed</div>
+    <p class="qtext">A girl stands 2 m in front of a plane mirror. She then walks 0.5 m towards it. What is now the distance between her and her image?</p>
+    <p>The trap is answering 1.5 m, or 2 m, or 3 m — all of which come from forgetting that the image moves too. The image is never fixed to the wall. It always sits the same distance behind the mirror as the girl is in front, so when she moves, it moves the same amount in the opposite direction.</p>
+    <p><strong>How to work it:</strong> First find her new distance to the mirror: 2 − 0.5 = <strong>1.5 m</strong>. Her image is therefore 1.5 m behind the mirror. The distance between them is 1.5 + 1.5 = <strong>3 m</strong>.</p>
+    <p>Say the rule out loud every time: <strong>object-to-image distance is twice the object-to-mirror distance.</strong> A 1.5 m gap to the mirror always means a 3 m gap to the image. Notice also that she and her image approach each other at twice her walking speed.</p>
+  </div>
+</section>
+
+<!-- 7.3 -->
+<section>
+  <span class="sec-num">7.3</span>
+  <h2>Refraction: light bending between materials</h2>
+
+  <p><strong>Refraction</strong> is the bending of light when it passes from one material into another — from air into water, or from air into glass. It happens because light does not travel at the same speed in every material, and the change of speed at the boundary tips the ray to a new direction.</p>
+
+  <p>The bending is real, but what you notice is the effect it has on where things <em>seem</em> to be. Your brain assumes light always came in a straight line, so it traces the bent ray backwards and puts the object in the wrong place.</p>
+
+  <p>Three classics come up over and over. A straw in a glass of water looks <strong>broken or bent</strong> at the water surface. A swimming pool looks <strong>shallower</strong> than it really is, which is why it can be dangerous to judge depth by eye. And words under a thick glass block appear <strong>nearer the top</strong> than they are.</p>
+
+  <figure>
+    <div class="fig-label">Figure 7.3</div>
+    <svg viewBox="0 0 620 220" role="img" aria-label="A straw appearing broken in a glass of water, and a pool appearing shallower than it is">
+      <line x1="310" y1="18" x2="310" y2="200" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+      <!-- LEFT: straw in glass -->
+      <path d="M112 46 L120 156 L190 156 L198 46" fill="none" stroke="var(--wire)" stroke-width="2.5"/>
+      <line x1="115" y1="86" x2="195" y2="86" stroke="var(--accent2)" stroke-width="2"/>
+      <!-- straw: straight above water, kicked sideways below -->
+      <line x1="176" y1="34" x2="156" y2="86" stroke="var(--copper)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="156" y1="86" x2="134" y2="150" stroke="var(--copper)" stroke-width="4" stroke-linecap="round"/>
+      <!-- ghost of where it would be if straight -->
+      <line x1="156" y1="86" x2="146" y2="150" stroke="var(--ink-faint)" stroke-width="2" stroke-dasharray="4 4"/>
+      <text x="155" y="184" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="var(--ink)">straw looks broken</text>
+      <text x="155" y="206" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">bend is at the water surface</text>
+
+      <!-- RIGHT: pool looks shallower -->
+      <rect x="390" y="60" width="150" height="96" fill="none" stroke="var(--wire)" stroke-width="2.5"/>
+      <line x1="390" y1="60" x2="540" y2="60" stroke="var(--accent2)" stroke-width="2"/>
+      <!-- real bottom -->
+      <line x1="396" y1="156" x2="534" y2="156" stroke="var(--wire)" stroke-width="3"/>
+      <!-- apparent bottom -->
+      <line x1="396" y1="112" x2="534" y2="112" stroke="var(--copper)" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <text x="556" y="116" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" fill="var(--copper)">looks</text>
+      <text x="556" y="160" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" fill="var(--ink-soft)">real</text>
+      <text x="465" y="184" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="var(--ink)">pool looks shallower</text>
+      <text x="465" y="206" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">bottom seems raised up</text>
+    </svg>
+    <figcaption>In both cases nothing has actually moved. The light bent at the water surface, and your brain traced it back along a straight line to <b>the wrong place</b>.</figcaption>
+  </figure>
+
+  <div class="mistake">
+    <div class="mistake-tag">Commonly missed</div>
+    <p class="qtext">Which of these is <em>not</em> an effect of refraction? (1) A straw in water appears bent. (2) The word AMBULANCE appears the right way round in a mirror. (3) A swimming pool appears shallower than it is.</p>
+    <p>The trap is that all three are "things looking odd", so they feel like the same family. They are not. Refraction happens when light passes <em>through</em> a boundary into a new material. A mirror is not a boundary light passes through — the light bounces straight back off it.</p>
+    <p><strong>How to work it:</strong> ask one question about each option — <em>did the light go into a different material, or did it bounce?</em> Straw in water: light went from water into air, so refraction. Pool: light went from water into air, so refraction. Mirror writing: light bounced off a shiny surface, so <strong>reflection</strong>, not refraction.</p>
+    <p>Lateral inversion belongs to mirrors and reflection. It is the standard wrong option in this question and it catches people every year.</p>
+  </div>
+</section>
+
+<!-- 7.4 -->
+<section>
+  <span class="sec-num">7.4</span>
+  <h2>Colour, filters and how we see</h2>
+
+  <p>White light looks colourless but it is really a <strong>mixture</strong> of all the colours. A prism or a raindrop can spread it out into red, orange, yellow, green, blue, indigo and violet — that spread is a rainbow.</p>
+
+  <p>A <strong>filter</strong> is a coloured transparent sheet. It lets its own colour through and <strong>absorbs</strong> everything else. Shine white light through a red filter and only red comes out; all the other colours were soaked up. That is why the world looks dim through coloured plastic — most of the light has been removed.</p>
+
+  <p>Put two <em>different</em> filters one behind the other and you usually get darkness. A red filter passes only red. A blue filter then absorbs red, because red is not its colour. Nothing survives the second filter, so no light comes out at all.</p>
+
+  <p>Seeing colour works the same way. An apple looks red because its skin <strong>reflects red light into your eyes and absorbs the other colours</strong>. The redness is not stored in the apple; it is a statement about which light bounces off. So a red apple under pure blue light looks black — there is no red light present for it to reflect, and it absorbs the blue.</p>
+
+  <figure>
+    <div class="fig-label">Figure 7.4</div>
+    <svg viewBox="0 0 620 200" role="img" aria-label="White light through a red filter gives red light; a red filter followed by a blue filter gives darkness">
+      <defs>
+        <marker id="m6" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="var(--ink-soft)"/>
+        </marker>
+      </defs>
+
+      <!-- TOP ROW: white -> red filter -> red -->
+      <text x="46" y="52" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">white</text>
+      <line x1="72" y1="47" x2="176" y2="47" stroke="var(--ink-soft)" stroke-width="3" marker-end="url(#m6)"/>
+      <rect x="186" y="18" width="16" height="58" fill="var(--wrong)" opacity="0.75"/>
+      <text x="194" y="94" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" fill="var(--ink-soft)">red filter</text>
+      <line x1="212" y1="47" x2="300" y2="47" stroke="var(--wrong)" stroke-width="3"/>
+      <text x="392" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="var(--ink)">red light gets through</text>
+      <text x="392" y="74" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" fill="var(--ink-soft)">all other colours absorbed</text>
+
+      <!-- BOTTOM ROW: white -> red -> blue -> nothing -->
+      <text x="46" y="152" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">white</text>
+      <line x1="72" y1="147" x2="150" y2="147" stroke="var(--ink-soft)" stroke-width="3" marker-end="url(#m6)"/>
+      <rect x="160" y="118" width="16" height="58" fill="var(--wrong)" opacity="0.75"/>
+      <line x1="176" y1="147" x2="230" y2="147" stroke="var(--wrong)" stroke-width="3"/>
+      <rect x="240" y="118" width="16" height="58" fill="var(--accent2)" opacity="0.75"/>
+      <line x1="262" y1="147" x2="300" y2="147" stroke="var(--rule)" stroke-width="3" stroke-dasharray="4 5"/>
+      <text x="392" y="152" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="var(--ink)">no light gets through</text>
+      <text x="392" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" fill="var(--ink-soft)">blue filter absorbs the red</text>
+      <text x="208" y="194" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" fill="var(--ink-soft)">red then blue</text>
+    </svg>
+    <figcaption>A filter removes colours; it never adds one. <b>Two different filters in a row normally give darkness</b>, because whatever survived the first is absorbed by the second.</figcaption>
+  </figure>
+
+  <div class="keyidea">
+    <span class="kl">Reflects, not contains</span>
+    <p>An object looks red because it <strong>reflects red light and absorbs the rest</strong>. Take away the red light and it has nothing left to reflect, so it looks black.</p>
+  </div>
+</section>
+
+<!-- 7.5 -->
+<section>
+  <span class="sec-num">7.5</span>
+  <h2>Sound: vibrations that need a material</h2>
+
+  <p>Sound is made by <strong>vibrations</strong>. A guitar string shakes, a drum skin shakes, your vocal cords shake. The vibrating object pushes the air next to it back and forth, that air pushes the air beyond it, and the disturbance travels outwards until it reaches your ear.</p>
+
+  <p>That chain is the important part. Sound needs a <strong>medium</strong> — a material to travel through. Solids, liquids and gases all work. A <strong>vacuum</strong>, which is space with no material in it at all, does not. Ring an electric bell inside a jar and pump the air out: the hammer still moves, but the sound fades to nothing. Light from the same jar keeps coming out perfectly well. This is why space is silent even though it is not dark.</p>
+
+  <p>Two properties of a sound can change independently. <strong>Pitch</strong> is how high or low a note sounds, and it depends on <strong>frequency</strong> — how many vibrations happen each second. Faster vibration means higher pitch. <strong>Loudness</strong> depends on <strong>amplitude</strong> — how big each vibration is. Hitting a drum harder makes a bigger vibration and a louder sound, but the pitch does not change.</p>
+
+  <p>Frequency is measured in <strong>hertz (Hz)</strong>, and at this level you find it by dividing:</p>
+
+  <p><strong>frequency = number of vibrations ÷ time in seconds</strong></p>
+
+  <p>So an object making 20 vibrations in 5 seconds has a frequency of 20 ÷ 5 = <strong>4 Hz</strong>. If a different object makes 60 vibrations in 5 seconds, that is 12 Hz — three times the frequency, so a higher pitch.</p>
+
+  <figure>
+    <div class="fig-label">Figure 7.5</div>
+    <svg viewBox="0 0 620 250" role="img" aria-label="Wave diagrams comparing high and low pitch, and loud and soft sound">
+      <!-- row 1: pitch -->
+      <text x="16" y="30" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="var(--ink)">PITCH — how fast it vibrates</text>
+      <line x1="40" y1="70" x2="270" y2="70" stroke="var(--rule)" stroke-width="1.5"/>
+      <path d="M40 70 Q57 40 74 70 T108 70 T142 70 T176 70 T210 70 T244 70" fill="none" stroke="var(--copper)" stroke-width="2.5"/>
+      <text x="155" y="104" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">high frequency = high pitch</text>
+
+      <line x1="350" y1="70" x2="580" y2="70" stroke="var(--rule)" stroke-width="1.5"/>
+      <path d="M350 70 Q384 40 418 70 T486 70 T554 70" fill="none" stroke="var(--copper)" stroke-width="2.5"/>
+      <text x="465" y="104" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">low frequency = low pitch</text>
+
+      <line x1="20" y1="128" x2="600" y2="128" stroke="var(--rule)" stroke-width="1"/>
+
+      <!-- row 2: loudness -->
+      <text x="16" y="156" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="var(--ink)">LOUDNESS — how big the vibration is</text>
+      <line x1="40" y1="196" x2="270" y2="196" stroke="var(--rule)" stroke-width="1.5"/>
+      <path d="M40 196 Q68 152 96 196 T152 196 T208 196 T264 196" fill="none" stroke="var(--accent2)" stroke-width="2.5"/>
+      <text x="155" y="234" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">large amplitude = loud</text>
+
+      <line x1="350" y1="196" x2="580" y2="196" stroke="var(--rule)" stroke-width="1.5"/>
+      <path d="M350 196 Q378 180 406 196 T462 196 T518 196 T574 196" fill="none" stroke="var(--accent2)" stroke-width="2.5"/>
+      <text x="465" y="234" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="var(--ink-soft)">small amplitude = soft</text>
+    </svg>
+    <figcaption>The top pair have the same height but different spacing — same loudness, different pitch. The bottom pair have the same spacing but different heights — <b>same pitch, different loudness</b>. The two properties are independent.</figcaption>
+  </figure>
+
+  <div class="keyidea">
+    <span class="kl">Light versus sound</span>
+    <p>Light <strong>can</strong> travel through a vacuum. Sound <strong>cannot</strong>, because it needs particles of a material to pass the vibration along. If a question mentions space, an airless jar, or the Moon, this is almost always the point being tested.</p>
+  </div>
+</section>
+
+<!-- 7.6 -->
+<section>
+  <span class="sec-num">7.6</span>
+  <h2>Section B: the shortcut worth memorising</h2>
+
+  <div class="strategy">
+    <p>In this question format you get three statements and must decide which are correct. Only these four options are ever offered:</p>
+    <div class="tbl-scroll">
+      <table>
+        <tr><th>Option</th><th>Means</th></tr>
+        <tr><td class="opt">A</td><td>1, 2 and 3 are correct</td></tr>
+        <tr><td class="opt">B</td><td>1 and 2 only</td></tr>
+        <tr><td class="opt">C</td><td>2 and 3 only</td></tr>
+        <tr><td class="opt">D</td><td>1 only</td></tr>
+      </table>
+    </div>
+    <p><strong>Notice what is missing:</strong> there is no "2 only", no "3 only", no "1 and 3". So statement 1 does most of the work for you.</p>
+    <div class="tbl-scroll">
+      <table>
+        <tr><th>If statement 1 is…</th><th>Then…</th></tr>
+        <tr><td class="opt">wrong</td><td><strong>The answer is C.</strong> You can stop reading.</td></tr>
+        <tr><td class="opt">right</td><td>Check statement 3 → correct means <b>A</b>, wrong means <b>B</b> or <b>D</b></td></tr>
+      </table>
+    </div>
+    <p>These questions are worth 2 marks each, so they carry far more weight than their length suggests. There is no penalty for a wrong answer — never leave one blank.</p>
+  </div>
+</section>
+
+<!-- 7.7 -->
+<section>
+  <span class="sec-num">7.7</span>
+  <h2>Think and Explain</h2>
+  <p>Answer these out loud, in full sentences, before opening the answer.</p>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">1</span>
+      <p class="q-text">A boy stands 1.2 m in front of a plane mirror. How far is he from his image? He then steps back 0.3 m. How far apart are they now?</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>The image is always the same distance behind the mirror as the object is in front. So the image starts 1.2 m behind the mirror, and the distance between the boy and his image is 1.2 + 1.2 = <strong>2.4 m</strong>.</p>
+        <p>After stepping back he is 1.2 + 0.3 = 1.5 m from the mirror. His image moves back the same amount, to 1.5 m behind. The new separation is 1.5 + 1.5 = <strong>3.0 m</strong>.</p>
+        <p>The pattern is worth memorising: the object-to-image distance is always <strong>twice</strong> the object-to-mirror distance, so it changes by twice as much as the person moves.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">2</span>
+      <p class="q-text">An astronaut on the Moon can see an explosion but hears nothing. Explain why, and say what this tells you about the difference between light and sound.</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>There is almost no air on the Moon, so there is no <strong>medium</strong> for the sound to travel through. Sound moves by making particles of a material vibrate and pass the vibration on. With no particles, the vibration cannot be passed anywhere, so no sound reaches the astronaut.</p>
+        <p>Light does not need particles. It can travel through a vacuum, which is why the astronaut still sees the flash — and why sunlight reaches Earth across empty space.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">3</span>
+      <p class="q-text">A ruler is held over the edge of a desk and twanged. It makes 45 vibrations in 3 seconds. Find the frequency. The ruler is then pushed further in so a shorter piece sticks out, and it makes 90 vibrations in 3 seconds. What has happened to the pitch?</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>Frequency is the number of vibrations divided by the time in seconds. First case: 45 ÷ 3 = <strong>15 Hz</strong>. Second case: 90 ÷ 3 = <strong>30 Hz</strong>.</p>
+        <p>The frequency has doubled, and pitch depends on frequency. So the note is <strong>higher</strong> the second time. A shorter length of ruler vibrates faster, which is why it sounds higher.</p>
+        <p>Note that nothing here tells you about loudness — that would depend on how hard the ruler was twanged, not how fast it vibrates.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">4</span>
+      <p class="q-text">A green leaf is placed in a room lit only by red light. What colour does it appear, and why?</p>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p>It appears <strong>black</strong>. A leaf looks green in white light because it reflects green light into your eyes and absorbs the other colours, including red.</p>
+        <p>In a room lit only by red light there is no green light present for the leaf to reflect. The red light that does land on it is absorbed. Almost no light comes back off the leaf, so it looks black.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 7.8 -->
+<section>
+  <span class="sec-num">7.8</span>
+  <h2>Section B practice</h2>
+  <p>Use the shortcut from 7.6. Judge statement 1 first.</p>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">1</span>
+      <div>
+        <p class="q-text">Which statements about the image formed in a plane mirror are correct?</p>
+        <ul class="stmts">
+          <li><span class="sn">1</span><span>The image is larger than the object.</span></li>
+          <li><span class="sn">2</span><span>The image is the same distance behind the mirror as the object is in front.</span></li>
+          <li><span class="sn">3</span><span>The image is laterally inverted.</span></li>
+        </ul>
+        <div class="opts"><span>A · 1,2,3</span><span>B · 1,2</span><span>C · 2,3</span><span>D · 1 only</span></div>
+      </div>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p><span class="ans-badge">Answer: C</span></p>
+        <p><strong>Statement 1 — wrong.</strong> A plane mirror image is always exactly the <em>same size</em> as the object, never larger. The moment statement 1 is wrong, the answer must be <strong>C</strong>. You can stop here.</p>
+        <p>Checking anyway: statement 2 is the standard equal-distance rule, and statement 3 is lateral inversion, which is why AMBULANCE is printed back-to-front. Both correct, so C fits.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">2</span>
+      <div>
+        <p class="q-text">Which statements about sound are correct?</p>
+        <ul class="stmts">
+          <li><span class="sn">1</span><span>Sound is produced by vibrating objects.</span></li>
+          <li><span class="sn">2</span><span>A sound of higher frequency has a higher pitch.</span></li>
+          <li><span class="sn">3</span><span>Sound can travel through a vacuum.</span></li>
+        </ul>
+        <div class="opts"><span>A · 1,2,3</span><span>B · 1,2</span><span>C · 2,3</span><span>D · 1 only</span></div>
+      </div>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p><span class="ans-badge">Answer: B</span></p>
+        <p><strong>Statement 1 — correct.</strong> Every sound starts with something vibrating. The answer is A, B or D.</p>
+        <p><strong>Statement 3 — wrong.</strong> A vacuum has no particles, so there is nothing to pass the vibration along. Light can cross a vacuum, sound cannot. That rules out A.</p>
+        <p><strong>Statement 2 — correct.</strong> Pitch depends on frequency: more vibrations per second means a higher note. So the answer is <strong>B</strong>.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="q">
+    <div class="q-head">
+      <span class="q-num">3</span>
+      <div>
+        <p class="q-text">A red book is viewed under different conditions. Which statements are correct?</p>
+        <ul class="stmts">
+          <li><span class="sn">1</span><span>In white light, the book reflects red light and absorbs the other colours.</span></li>
+          <li><span class="sn">2</span><span>Under blue light only, the book appears black.</span></li>
+          <li><span class="sn">3</span><span>Placing a red filter and a blue filter one behind the other lets most of the light through.</span></li>
+        </ul>
+        <div class="opts"><span>A · 1,2,3</span><span>B · 1,2</span><span>C · 2,3</span><span>D · 1 only</span></div>
+      </div>
+    </div>
+    <details>
+      <summary>Show answer</summary>
+      <div class="answer">
+        <p><span class="ans-badge">Answer: B</span></p>
+        <p><strong>Statement 1 — correct.</strong> That is exactly what "looking red" means. The answer is A, B or D.</p>
+        <p><strong>Statement 3 — wrong.</strong> The red filter passes only red; the blue filter then absorbs that red. Two different filters in a row give darkness, not brightness. That rules out A.</p>
+        <p><strong>Statement 2 — correct.</strong> Under blue light there is no red light for the book to reflect, and it absorbs blue, so it looks black. The answer is <strong>B</strong>.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">7.9</span>
+  <h2>Go further</h2>
+  <p>Different ways into the same ideas. The simulation is the one to try first —
+  moving something yourself builds intuition that reading cannot.</p>
+
+  <div class="links">
+    <a class="lnk" href="https://phet.colorado.edu/en/simulations/color-vision">
+      <span class="lnk-kind">Try</span>
+      <span class="lnk-body">
+        <span class="lnk-title">Colour Vision</span>
+        <span class="lnk-desc">Shine coloured light on objects and see which colours reach your eye.</span>
+      </span>
+    </a>
+    <a class="lnk" href="https://simple.wikipedia.org/wiki/Light">
+      <span class="lnk-kind">Read</span>
+      <span class="lnk-body">
+        <span class="lnk-title">Light — Simple English Wikipedia</span>
+        <span class="lnk-desc">Reflection and refraction in plain English.</span>
+      </span>
+    </a>
+    <a class="lnk" href="https://www.bbc.co.uk/bitesize/subjects/z2pfb9q">
+      <span class="lnk-kind">Read</span>
+      <span class="lnk-body">
+        <span class="lnk-title">BBC Bitesize — Science</span>
+        <span class="lnk-desc">Short pages with quizzes at the end of each topic.</span>
+      </span>
+    </a>
+    <a class="lnk" href="https://www.youtube.com/results?search_query=refraction+of+light+experiment+for+kids">
+      <span class="lnk-kind">Watch</span>
+      <span class="lnk-body">
+        <span class="lnk-title">Refraction demonstrations</span>
+        <span class="lnk-desc">Search results — the pencil-in-water trick is the one to watch.</span>
+      </span>
+    </a>
+    <a class="lnk" href="https://scioly.org/wiki/index.php/Main_Page">
+      <span class="lnk-kind">Dig deeper</span>
+      <span class="lnk-body">
+        <span class="lnk-title">Scioly student wiki</span>
+        <span class="lnk-desc">A student-built wiki for a US science competition. Topics overlap with ours, though some material goes well beyond what you need.</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<section class="recap">
+  <h2>Before you move on</h2>
+  <p>Can you answer each of these without looking back?</p>
+  <ul>
+    <li><span class="ck">01</span><span>Why does an opaque object cast a shadow, in terms of how light travels?</span></li>
+    <li><span class="ck">02</span><span>A boy is 2 m from a plane mirror. How far is he from his image, and why is it not 2 m?</span></li>
+    <li><span class="ck">03</span><span>Name two effects of refraction, and one effect that is reflection rather than refraction.</span></li>
+    <li><span class="ck">04</span><span>Why does a red object look black under blue light?</span></li>
+    <li><span class="ck">05</span><span>Why can light cross space but sound cannot? And what is the frequency of 20 vibrations in 5 seconds?</span></li>
+    <li><span class="ck">06</span><span>In Section B, what do you know instantly if statement 1 is wrong?</span></li>
+  </ul>
+
+  <p class="footer-note">Companion reading: Hewitt, <em>Conceptual Physics</em>, Ch 26–28 (pp. 550–621). Companion simulation: PhET Colour Vision.</p>
+</section>
+
+<a class="backlink" href="index.html">← All chapters</a>
+
+</div>
