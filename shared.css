@@ -307,3 +307,43 @@ a.lnk:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
   a.lnk { gap: 10px; padding: 12px 13px; }
   .lnk-kind { min-width: 52px; font-size: 10px; }
 }
+
+/* ---- book references ---- */
+.refs {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent2);
+  background: var(--card);
+  border-radius: 0 3px 3px 0;
+  padding: 18px 20px;
+  margin: 26px 0;
+}
+.refs-tag {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent2); margin-bottom: 12px;
+}
+.refs dl { margin: 0; }
+.refs dt {
+  font-weight: 700; font-size: 15.5px;
+  margin: 12px 0 2px; color: var(--ink);
+}
+.refs dt:first-child { margin-top: 0; }
+.refs dd {
+  margin: 0 0 2px; font-size: 15px; color: var(--ink-soft);
+}
+.refs .pages {
+  font-family: var(--mono); font-size: 13.5px;
+  color: var(--accent2);
+}
+.refs .note { font-size: 14px; color: var(--ink-faint); margin-top: 3px; }
+
+/* ---- inline chapter nav ---- */
+.chnav {
+  display: flex; justify-content: space-between; gap: 12px;
+  margin: 40px 0 0; padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 13px;
+}
+.chnav a { color: var(--copper); text-decoration: none; }
+.chnav a:hover { text-decoration: underline; }
+.chnav span { color: var(--ink-faint); }
