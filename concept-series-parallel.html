@@ -1,0 +1,87 @@
+<title>Series and Parallel — Science Notes</title>
+<link rel="stylesheet" href="shared.css">
+
+<div class="wrap">
+
+<a class="backlink" href="concepts.html">← All concepts</a>
+
+<header class="chapter-head">
+  <p class="eyebrow">Concept</p>
+  <h1>Series and Parallel</h1>
+  <p class="standfirst">Components are in series when charge has one path through all of them, and in parallel when the path splits so charge can go through one or the other.</p>
+  <p class="cpage-meta">Introduced in <a href="ch3-electric-circuits.html">Chapter 3: Electric Circuits</a></p>
+</header>
+
+<section>
+  <span class="sec-num">1</span>
+  <h2>What it means</h2>
+  <p>There are only two ways to add a second bulb to a circuit. You can put it in the queue behind the first, so charge must pass through both one after the other. Or you can give it its own branch, so charge arrives at a junction and chooses one way or the other. The first is <strong>series</strong>, the second is <strong>parallel</strong>, and almost everything else in this topic follows from which one you chose.</p>
+
+  <p>The test that never fails is to trace a route with your finger from one battery terminal, through the circuit, and back to the other. If there is only one possible route, everything on it is in series. If your finger reaches a point where the wire divides and you must pick a branch, the things on those branches are in parallel.</p>
+
+  <p>Counting bulbs is not the test. Counting <em>paths</em> is. Two bulbs drawn side by side on a page may still be in series, and two drawn far apart may be in parallel. Only the wiring decides.</p>
+</section>
+
+<section>
+  <span class="sec-num">2</span>
+  <h2>How it works</h2>
+  <p>In a series circuit the current is the same at every point, because there is nowhere for charge to leave the single path. But the energy each electron carries is shared out among the components. Two identical bulbs in series each get half the push they would get alone, so both are dim, and both are equally dim. Break one bulb and the loop is broken, so both go out. The old Christmas lights that failed entirely when a single lamp blew were wired this way.</p>
+
+  <p>In a parallel circuit it is the other way round. Each branch is connected straight across the battery, so each branch gets the <em>full</em> voltage. Two bulbs in parallel therefore both glow at full brightness, as bright as either would be on its own. Because the current splits between them, the battery must supply more total current — if each bulb draws 0.3 A, the battery supplies 0.6 A. That is the price of the brightness: the battery runs flat sooner.</p>
+
+  <p>The independence is the useful part. Unscrew one bulb in a parallel pair and its branch is broken, but the other branch is still a complete loop from the battery and back, so the second bulb stays lit and just as bright. This is why every room in a house is wired in parallel. Your bedroom light and the kettle are on separate branches, both receiving the full mains voltage, and switching one off does not darken the other.</p>
+
+  <p>A worked comparison. Take a 3 V battery and two identical bulbs. In series, each bulb has about 1.5 V across it and one current, say 0.2 A, flows through both. In parallel, each bulb has the full 3 V across it and draws 0.2 A of its own, so the battery delivers 0.4 A. The parallel pair is brighter and drains the battery roughly four times as fast. Adding branches in parallel makes it <em>easier</em> for charge to get round, which is why more parallel bulbs means more total current, whereas adding bulbs in series makes it harder and means less.</p>
+
+  <div class="keyidea">
+    <span class="kl">The heart of it</span>
+    <p>Series shares the voltage and forces every component to share one fate; parallel gives every branch the full voltage and lets each fail alone.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">3</span>
+  <h2>Where the idea came from</h2>
+  <p>The distinction was not settled in a laboratory so much as in the streets, during the race to light cities electrically in the late 1800s. Early arc-lighting systems often ran lamps in series along a single circuit, which was simpler and used less copper, but had an obvious flaw: one failed lamp opened the loop and the whole run went dark.</p>
+
+  <p><strong>Thomas Edison</strong>'s system, developed at Menlo Park in New Jersey and switched on for Manhattan's Pearl Street district in 1882, wired its lamps in parallel instead. Each lamp sat across the same supply, so each got the full voltage and each could fail, or be switched off, without touching the rest. Edison did not invent parallel wiring — the idea was already understood — but building a complete practical system around it, generators and meters and all, is what made it the standard. Houses are wired that way today for exactly the reason he chose it.</p>
+
+  <p>What Edison got wrong is worth as much as what he got right. He committed to direct current at low voltage, which loses too much energy over long distances, and he fought a bitter public campaign against the alternating-current systems of George Westinghouse and Nikola Tesla in the late 1880s. Alternating current won, because it can be stepped up to high voltage for transmission and back down for use. Edison's parallel wiring survived; his choice of current did not.</p>
+</section>
+
+<section>
+  <span class="sec-num">4</span>
+  <h2>What people get wrong</h2>
+  <p>The commonest mistake is deciding series or parallel from how the drawing looks rather than from the wiring. Two bulbs drawn one above the other look parallel even when both sit on the same single loop. Always trace the path with a finger and count how many routes exist.</p>
+
+  <p>The second mistake is expecting parallel bulbs to be dimmer than a single bulb, on the reasoning that they must be "sharing" something. They share the current, but not the voltage, and brightness follows the voltage across each bulb. Each parallel branch gets the whole battery voltage, so each is full brightness.</p>
+
+  <div class="mistake">
+    <div class="mistake-tag">Commonly missed</div>
+    <p class="qtext">Three identical bulbs are connected in parallel across a battery. One bulb is removed from its holder. What happens to the brightness of the other two?</p>
+    <p>The trap is assuming that removing a bulb leaves "more electricity to go round", so the remaining two should brighten. Many people confidently pick that.</p>
+    <p><strong>How to work it:</strong> Ask what decides a bulb's brightness — the voltage across it. Each branch is wired directly across the battery, so each bulb had the full battery voltage before, and the two survivors still have the full battery voltage after. Nothing about their branches has changed, so they stay <strong>exactly as bright as before</strong>. What does change is the total current the battery supplies, which drops by a third, so the battery will now last longer.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">5</span>
+  <h2>Connected ideas</h2>
+  <p>Whether components sit in series or parallel decides how the current divides and how much total resistance the battery sees — adding parallel branches lowers the resistance, which is why the current rises. Both arrangements depend on having conductors to define the paths in the first place, and both are ultimately about how the battery's energy is shared out.</p>
+  <div class="related">
+    <a href="concept-electric-current.html">Electric Current</a>
+    <a href="concept-resistance.html">Resistance</a>
+    <a href="concept-conductor-insulator.html">Conductors and Insulators</a>
+    <a href="concept-energy.html">Energy</a>
+  </div>
+</section>
+
+<section class="recap">
+  <h2>In one line</h2>
+  <p>In series there is one path, so the current is shared and one break stops everything; in parallel there are several paths, so each branch gets the full voltage and can fail on its own.</p>
+  <p class="footer-note">Back to <a href="ch3-electric-circuits.html">Chapter 3</a> · <a href="glossary.html">Glossary</a> · <a href="concepts.html">All concepts</a></p>
+</section>
+
+<a class="backlink" href="concepts.html">← All concepts</a>
+
+</div>

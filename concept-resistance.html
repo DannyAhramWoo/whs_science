@@ -1,0 +1,92 @@
+<title>Resistance — Science Notes</title>
+<link rel="stylesheet" href="shared.css">
+
+<div class="wrap">
+
+<a class="backlink" href="concepts.html">← All concepts</a>
+
+<header class="chapter-head">
+  <p class="eyebrow">Concept</p>
+  <h1>Resistance</h1>
+  <p class="standfirst">Resistance is how strongly a component opposes the flow of electric charge through it.</p>
+  <p class="cpage-meta">Introduced in <a href="ch3-electric-circuits.html">Chapter 3: Electric Circuits</a></p>
+</header>
+
+<section>
+  <span class="sec-num">1</span>
+  <h2>What it means</h2>
+  <p>Blow through a wide drinking straw and the air moves easily. Blow through a thin coffee stirrer with the same effort and far less air gets through. The stirrer resists the flow more. Resistance in a circuit is the same notion: for a given push from the battery, a high-resistance component lets less charge past than a low-resistance one.</p>
+
+  <p>Resistance is measured in <strong>ohms</strong>, written with the Greek letter Ω. A short piece of copper wire has a resistance of a tiny fraction of an ohm. A torch bulb might be a few ohms. A block of plastic has a resistance of many millions of ohms, which is only another way of saying it is an insulator — insulators are not a separate kind of thing, just the far end of the resistance scale.</p>
+
+  <p>The relationship that ties it together is <strong>Ohm's law</strong>: for many materials, the current through a component equals the voltage across it divided by its resistance. Put in words rather than symbols: more push gives more current, more resistance gives less. If 3 V across a component produces 0.5 A, its resistance is 3 divided by 0.5, which is 6 Ω.</p>
+</section>
+
+<section>
+  <span class="sec-num">2</span>
+  <h2>How it works</h2>
+  <p>Recall that a metal is a lattice of fixed atoms with loose electrons drifting between them. Those atoms are not still — they vibrate constantly, and the drifting electrons keep bumping into them. Each collision knocks an electron off course and hands some of its energy to the atom. Resistance is the accumulated effect of all those collisions, and the energy handed over is exactly why a resistive component gets warm.</p>
+
+  <p>That mechanism predicts four things, and all four turn out to be true. A <strong>longer</strong> wire has more resistance, because there are more atoms to collide with — double the length, double the resistance. A <strong>thicker</strong> wire has less, because there is more room for electrons to pass, in the same way a wide pipe carries more water than a narrow one. The <strong>material</strong> matters, because copper releases loose electrons more generously than iron does. And a <strong>hotter</strong> wire has more resistance, because heat makes the atoms vibrate harder and collisions become more frequent.</p>
+
+  <p>That last point explains something you use every day. A filament bulb is deliberately made from a long, very thin coil of tungsten, so its resistance is high. Charge forced through it collides constantly, dumping so much energy that the filament reaches roughly 2,500 °C and glows white. The bulb is not lighting despite its resistance; it lights <em>because</em> of it. A kettle element, a toaster and an electric heater all work on the same trick.</p>
+
+  <p>Resistance also explains why a short circuit is dangerous. If a bare wire connects the two battery terminals directly, the path has almost no resistance, so the current becomes enormous. All that current still runs through a wire with a little resistance, so the wire heats fiercely and can set fire to whatever it touches. Fuses exist to break such a circuit before that happens.</p>
+
+  <p>One worked case. Two identical 6 Ω bulbs in series present 12 Ω to the battery, so the current is halved and both bulbs are dim. The same two bulbs in parallel offer the charge two routes at once, and the combined resistance drops to 3 Ω, so the battery supplies four times the series current. Adding resistors in series always increases total resistance; adding them in parallel always decreases it, because you are opening extra doors rather than lengthening the corridor.</p>
+
+  <div class="keyidea">
+    <span class="kl">The heart of it</span>
+    <p>Resistance is the friction charge meets on its way through a material, and the energy lost to it reappears as heat.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">3</span>
+  <h2>Where the idea came from</h2>
+  <p>The relationship is named after <strong>Georg Simon Ohm</strong>, a German schoolteacher who published his findings in 1827 in a book titled <em>Die galvanische Kette, mathematisch bearbeitet</em>. He worked mostly alone, in a school in Cologne, making his own wires of different lengths and thicknesses and measuring the current each carried.</p>
+
+  <p>His experiments were harder than they sound. Batteries of the day drifted as their chemicals were used up, so his early readings were unstable. He eventually switched to a thermocouple — a junction of two metals that gives a steady small voltage when heated — which gave him a reliable source, and the clean relationship emerged.</p>
+
+  <p>The reception was hostile. Several German critics dismissed the work, one influential figure reportedly calling it a web of naked fancies, and Ohm's mathematical approach was out of fashion in a country where physics was expected to be more philosophical. He resigned his teaching post in disappointment. Recognition came slowly from outside Germany: the Royal Society in London awarded him the Copley Medal in 1841, and only late in life, in 1849, did he obtain the university professorship he had wanted. He died in 1854. The unit of resistance was named after him in 1881.</p>
+
+  <p>His story is a useful corrective to the idea that a correct result is accepted immediately. Ohm's law was right when it was published and right while it was being ridiculed. Being right and being believed are different achievements.</p>
+</section>
+
+<section>
+  <span class="sec-num">4</span>
+  <h2>What people get wrong</h2>
+  <p>The usual error is thinking resistance somehow uses up the current, so that less current emerges from a resistor than entered it. It does not. The same charge comes out the far side; what is reduced is the energy each unit of charge carries, and the resistance sets how much current flows through the whole loop in the first place.</p>
+
+  <p>The second error is assuming resistance is a fixed property of an object, like its mass. For a metal it depends on temperature, and a filament bulb's resistance is many times higher when lit than when cold. That is why bulbs so often fail at the instant you switch them on: the cold filament has low resistance, so a large surge of current passes and heats it violently.</p>
+
+  <div class="mistake">
+    <div class="mistake-tag">Commonly missed</div>
+    <p class="qtext">A pupil replaces the connecting wire in a circuit with one made of the same metal but twice as long and twice as thick. What happens to the current?</p>
+    <p>The trap is doing only half the problem. Spot "twice as long" and you conclude the resistance doubles and the current halves — a tidy answer that ignores the thickness.</p>
+    <p><strong>How to work it:</strong> Handle each change separately, then combine. Doubling the length doubles the resistance. Doubling the thickness gives charge more room and reduces the resistance — and here it is worth being careful, since doubling the <em>diameter</em> multiplies the cross-sectional area by four, cutting resistance to a quarter. Combining a factor of 2 with a factor of one quarter gives half the original resistance, so the <strong>current roughly doubles</strong>. The lesson is to change one variable at a time in your head before letting them act together.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">5</span>
+  <h2>Connected ideas</h2>
+  <p>Resistance is what limits the current a battery can drive, and the difference between a conductor and an insulator is really a difference in resistance. How resistances combine depends on whether components are in series or parallel, and the energy lost in a resistor turns into heat, which is a straightforward energy transfer.</p>
+  <div class="related">
+    <a href="concept-electric-current.html">Electric Current</a>
+    <a href="concept-conductor-insulator.html">Conductors and Insulators</a>
+    <a href="concept-series-parallel.html">Series and Parallel</a>
+    <a href="concept-heat.html">Heat</a>
+    <a href="concept-energy.html">Energy</a>
+  </div>
+</section>
+
+<section class="recap">
+  <h2>In one line</h2>
+  <p>Resistance measures how hard a component makes it for charge to pass, so more resistance means less current and more of the energy turning into heat.</p>
+  <p class="footer-note">Back to <a href="ch3-electric-circuits.html">Chapter 3</a> · <a href="glossary.html">Glossary</a> · <a href="concepts.html">All concepts</a></p>
+</section>
+
+<a class="backlink" href="concepts.html">← All concepts</a>
+
+</div>
