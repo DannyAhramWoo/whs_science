@@ -410,3 +410,27 @@ a.cx:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
 }
 .cgrid a:hover { border-color: var(--copper); }
 .cgrid .cg-ch { display: block; font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); margin-top: 3px; }
+
+/* ---- beyond the syllabus badge ---- */
+.beyond {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent2);
+  border-radius: 0 3px 3px 0;
+  padding: 16px 20px; margin: 0 0 32px;
+}
+.beyond-tag {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent2); margin-bottom: 8px;
+}
+.beyond p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+.beyond p + p { margin-top: 8px; }
+.beyond b { color: var(--ink); }
+
+.u-beyond .dot { background: var(--accent2); }
+.ch-tag.extra {
+  color: var(--accent2);
+  background: transparent;
+  border: 1px solid var(--accent2);
+}
