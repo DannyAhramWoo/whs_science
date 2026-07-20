@@ -33,6 +33,18 @@
 
   <p>A worked comparison. Take a 3 V battery and two identical bulbs. In series, each bulb has about 1.5 V across it and one current, say 0.2 A, flows through both. In parallel, each bulb has the full 3 V across it and draws 0.2 A of its own, so the battery delivers 0.4 A. The parallel pair is brighter and drains the battery roughly four times as fast. Adding branches in parallel makes it <em>easier</em> for charge to get round, which is why more parallel bulbs means more total current, whereas adding bulbs in series makes it harder and means less.</p>
 
+  <h3>Working out an unknown circuit</h3>
+
+  <p>Harder questions run the reasoning backwards. Instead of showing you a circuit and asking what happens, they give you a table of what happened and ask you to work out the circuit. The tool for this is one sentence: <strong>removing a bulb kills exactly those bulbs that depend on its path.</strong> If taking out bulb X puts bulb Y out too, then Y's only route to the battery ran through X, so they are in series. If Y stays lit, Y has a route of its own, so they are in parallel.</p>
+
+  <p>Try a table. Three bulbs P, Q and R. Remove P and both Q and R go out. Remove Q and only Q goes out, with P and R still lit. Remove R and only R goes out.</p>
+
+  <p>Take the rows one at a time. Row one is the strong clue: P's removal breaks the loop for everything, so every other bulb's current must pass through P. That puts P in series with the whole of the rest. Row two says Q can be removed while R survives, so R does not need Q's path — Q and R cannot be in series with each other. Row three confirms it from the other side. The only arrangement satisfying all three rows is P in series with a parallel pair made of Q and R.</p>
+
+  <p>Check the answer against the table before committing, which is the step most people skip. Removing P cuts the single shared wire, so nothing can complete a circuit and both others die, matching row one. Removing Q leaves R's branch intact and still joined to the battery through P, so R stays lit, matching row two. The circuit reproduces every row, so it is right.</p>
+
+  <p>Brightness questions with a switch yield to the same care. Closing a switch that adds a new parallel branch lowers the total resistance, so the battery pushes out more current — bulbs on the untouched shared path brighten, while bulbs already on their own full-voltage branch do not change. But if the closed switch creates a wire straight across a bulb, that bulb is short-circuited: the current takes the easier route around it and it goes out entirely.</p>
+
   <div class="keyidea">
     <span class="kl">The heart of it</span>
     <p>Series shares the voltage and forces every component to share one fate; parallel gives every branch the full voltage and lets each fail alone.</p>
