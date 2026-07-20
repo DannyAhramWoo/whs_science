@@ -434,3 +434,25 @@ a.cx:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
   background: transparent;
   border: 1px solid var(--accent2);
 }
+
+.examined {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent2);
+  border-radius: 0 3px 3px 0;
+  padding: 18px 22px;
+  margin: 30px 0;
+}
+.examined-tag {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent2); margin-bottom: 10px;
+}
+.examined ul { margin: 0; padding-left: 18px; }
+.examined li { margin: 0 0 10px; font-size: 15.5px; color: var(--ink-soft); line-height: 1.55; }
+.examined li:last-child { margin-bottom: 0; }
+.examined li b { color: var(--ink); }
+.examined .src {
+  font-family: var(--mono); font-size: 11.5px;
+  color: var(--ink-faint); display: block; margin-top: 3px;
+}
