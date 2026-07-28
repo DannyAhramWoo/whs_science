@@ -1,0 +1,186 @@
+/* Read-aloud controls. Linked on all 173 pages, including index.html, which
+   does not link shared.css — so only variables defined in BOTH stylesheets are
+   used here: --paper --ink --ink-soft --ink-faint --rule --copper --copper-soft
+   --card --serif --sans --mono */
+
+body { padding-bottom: 110px; }
+
+/* --- per-section button --- */
+
+.audio-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--copper);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  margin-left: 12px;
+  cursor: pointer;
+  vertical-align: 0.18em;
+  opacity: 0.55;
+  transition: opacity 0.15s, border-color 0.15s, background 0.15s;
+}
+.audio-btn:hover,
+.audio-btn:focus-visible {
+  opacity: 1;
+  border-color: var(--copper);
+}
+.audio-btn:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+.audio-btn[aria-pressed="true"] {
+  opacity: 1;
+  background: var(--copper-soft);
+  border-color: var(--copper);
+}
+
+/* --- current-sentence highlight --- */
+
+.audio-current {
+  background: var(--copper-soft);
+  box-shadow: -10px 0 0 var(--copper-soft), 10px 0 0 var(--copper-soft);
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+figure.audio-current,
+table.audio-current {
+  box-shadow: 0 0 0 2px var(--copper-soft);
+}
+
+/* --- floating control bar --- */
+
+.audio-bar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 18px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100vw - 24px);
+  padding: 8px 10px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  font-family: var(--mono);
+  font-size: 11.5px;
+}
+@media (prefers-color-scheme: dark) {
+  .audio-bar { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); }
+}
+:root[data-theme="dark"] .audio-bar { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); }
+
+@media (max-width: 640px) {
+  .audio-bar {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    transform: none;
+    max-width: none;
+  }
+}
+
+.audio-ctl {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.audio-ctl:hover:not(:disabled) { border-color: var(--copper); color: var(--copper); }
+.audio-ctl:focus-visible { outline: 2px solid var(--copper); outline-offset: 1px; }
+.audio-ctl:disabled { opacity: 0.35; cursor: default; }
+
+.audio-ctl-main {
+  color: var(--copper);
+  border-color: var(--copper);
+  font-weight: 600;
+}
+.audio-bar.is-playing .audio-ctl-main {
+  background: var(--copper-soft);
+}
+
+.audio-gear {
+  font-size: 13px;
+  line-height: 1;
+  padding: 5px 9px;
+}
+
+/* Voice + speed + answers toggle live in a popover above the bar, not on the
+   main row — otherwise the bar wraps to two lines on a phone-height viewport
+   and covers the content sitting behind it. */
+.audio-settings {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  min-width: 200px;
+}
+@media (prefers-color-scheme: dark) {
+  .audio-settings { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); }
+}
+:root[data-theme="dark"] .audio-settings { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); }
+.audio-settings.is-open { display: flex; }
+
+.audio-rates {
+  display: flex;
+  gap: 3px;
+}
+.audio-rate {
+  padding: 5px 6px;
+  flex: 1;
+}
+.audio-rate.is-on {
+  color: var(--copper);
+  border-color: var(--copper);
+  background: var(--copper-soft);
+}
+
+.audio-voice {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 5px 6px;
+  width: 100%;
+}
+
+.audio-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.audio-toggle input { accent-color: var(--copper); }
