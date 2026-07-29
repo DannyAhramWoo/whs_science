@@ -13,15 +13,33 @@
 
   var state = {
     units: [],        // Unit[] currently queued
-    queue: [],        // {text, unitIndex}[]
+    queue: [],        // {text, unitIndex}[] (TTS mode) or {src, unitIndex}[] (MP3 mode)
     qi: 0,            // index into queue
     playing: false,
     paused: false,
     scope: null,      // element whose LISTEN button is active, or null for whole page
     rate: 1,
     voice: null,
-    readAnswers: true
+    readAnswers: true,
+    mode: 'tts'        // 'tts' (speechSynthesis) or 'mp3' (pre-recorded, when available)
   };
+
+  // Pre-recorded audio, one MP3 per extracted unit, keyed by page filename.
+  // Falls back to the browser voice wherever a page has no manifest (e.g. right
+  // after a note edit, before that page's MP3s have been regenerated).
+  var mp3Manifest = null;    // { units: [{i, file}, ...] } | null | false (checked, absent)
+  var audioEl = null;        // the single <audio> element used for MP3 playback
+
+  function pageAudioDir() {
+    return 'audio/' + location.pathname.replace(/^.*\//, '').replace(/\.html?$/, '') + '/';
+  }
+
+  function loadMp3Manifest() {
+    return fetch(pageAudioDir() + 'manifest.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) { mp3Manifest = data || false; })
+      .catch(function () { mp3Manifest = false; });
+  }
 
   // Bumped on every stop/cancel. Callbacks from a previous generation are ignored,
   // otherwise cancel() fires onend on the in-flight utterance and playback revives.
@@ -468,6 +486,9 @@
   /* ------------------------------------------------------------- voices */
 
   var VOICE_PREFS = [
+    'Karen',                                       // en-AU — chosen by ear over the
+                                                   // en-GB options, which sounded
+                                                   // flatter on this machine
     'Daniel', 'Serena', 'Kate',                    // en-GB, Apple
     'Google UK English Female', 'Google UK English Male',
     'Microsoft Libby Online (Natural) - English (United Kingdom)',
@@ -541,7 +562,7 @@
     if (keepAlive) { clearInterval(keepAlive); keepAlive = null; }
   }
 
-  function buildQueue(units) {
+  function buildTtsQueue(units) {
     var q = [];
     units.forEach(function (u, ui) {
       u.sentences.forEach(function (s) {
@@ -552,18 +573,83 @@
     return q;
   }
 
+  // One MP3 per unit — recorded units without an audio file (a page edited
+  // since its last MP3 batch) are simply skipped in MP3 mode, not silently
+  // dropped from the page: play() falls back to TTS whenever any are missing.
+  function buildMp3Queue(units) {
+    if (!mp3Manifest || !mp3Manifest.units) return null;
+    var byIndex = {};
+    mp3Manifest.units.forEach(function (m) { byIndex[m.i] = m.file; });
+    var q = [];
+    for (var ui = 0; ui < units.length; ui++) {
+      if (!(ui in byIndex)) return null; // incomplete manifest for this scope, don't mix modes
+      q.push({ src: pageAudioDir() + byIndex[ui], unitIndex: ui });
+    }
+    return q;
+  }
+
   function play(units, scopeEl) {
     stop();
     if (!units.length) return;
     state.units = units;
-    state.queue = buildQueue(units);
+
+    var mp3Queue = buildMp3Queue(units);
+    if (mp3Queue) {
+      state.mode = 'mp3';
+      state.queue = mp3Queue;
+    } else {
+      state.mode = 'tts';
+      state.queue = buildTtsQueue(units);
+    }
+
     state.qi = 0;
     state.scope = scopeEl || null;
     state.playing = true;
     state.paused = false;
-    startKeepAlive();
+    if (state.mode === 'tts') startKeepAlive();
     syncUI();
-    speakNext();
+    playNext();
+  }
+
+  function playNext() {
+    if (state.mode === 'mp3') playMp3Next(); else speakNext();
+  }
+
+  function ensureAudioEl() {
+    if (audioEl) return audioEl;
+    audioEl = new Audio();
+    audioEl.preload = 'auto';
+    return audioEl;
+  }
+
+  function playMp3Next() {
+    if (!state.playing) return;
+    if (state.qi >= state.queue.length) { finish(); return; }
+
+    var item = state.queue[state.qi];
+    var unit = state.units[item.unitIndex];
+    var myGen = gen;
+
+    if (unit) highlightUnit(unit);
+
+    var a = ensureAudioEl();
+    a.onended = null; a.onerror = null;
+    a.src = item.src;
+    a.playbackRate = state.rate;
+
+    a.onended = function () {
+      if (myGen !== gen) return;
+      state.qi++;
+      playNext();
+    };
+    a.onerror = function () {
+      if (myGen !== gen) return;
+      state.qi++;
+      playNext();
+    };
+
+    var p = a.play();
+    if (p && p.catch) p.catch(function () { if (myGen === gen) { state.qi++; playNext(); } });
   }
 
   function speakNext() {
@@ -623,12 +709,19 @@
     state.qi = 0;
     stopKeepAlive();
     try { synth.cancel(); } catch (e) {}
+    if (audioEl) { try { audioEl.pause(); audioEl.onended = null; audioEl.onerror = null; } catch (e) {} }
     clearHighlight();
     syncUI();
   }
 
   function togglePause() {
     if (!state.playing) return;
+    if (state.mode === 'mp3') {
+      if (state.paused) { audioEl.play(); state.paused = false; }
+      else { audioEl.pause(); state.paused = true; }
+      syncUI();
+      return;
+    }
     if (state.paused) {
       synth.resume();
       state.paused = false;
@@ -642,8 +735,13 @@
   }
 
   // Navigating between the 173 pages would otherwise leave the old page talking.
-  window.addEventListener('pagehide', function () { gen++; try { synth.cancel(); } catch (e) {} });
-  window.addEventListener('beforeunload', function () { gen++; try { synth.cancel(); } catch (e) {} });
+  function hardStop() {
+    gen++;
+    try { synth.cancel(); } catch (e) {}
+    if (audioEl) { try { audioEl.pause(); } catch (e) {} }
+  }
+  window.addEventListener('pagehide', hardStop);
+  window.addEventListener('beforeunload', hardStop);
 
   /* -------------------------------------------------------- highlight */
 
@@ -780,8 +878,12 @@
         state.rate = r;
         prefSet(PREFS.rate, String(r));
         syncUI();
-        // Rate cannot change mid-utterance; restart so the change is audible now.
-        if (state.playing) {
+        if (state.mode === 'mp3' && audioEl) {
+          // <audio>.playbackRate applies immediately, no restart needed.
+          audioEl.playbackRate = r;
+        } else if (state.playing) {
+          // speechSynthesis utterances can't change rate mid-flight; restart
+          // from the current position so the change is audible right away.
           var units = state.units, scope = state.scope, at = state.qi;
           var savedQueue = state.queue.slice();
           gen++;
@@ -872,8 +974,10 @@
     mountBar();
     syncUI();
     // Deliberately after the UI: a slow or silent voice list must never leave
-    // the buttons dead.
+    // the buttons dead, and a slow/missing MP3 manifest must not either — play()
+    // falls back to the browser voice if the manifest hasn't resolved yet.
     loadVoices();
+    loadMp3Manifest();
 
     // Debug helper for verifying extraction against the page.
     window.__dumpUnits = function (sel) {
@@ -882,6 +986,11 @@
       console.log(units.length + ' units');
       units.forEach(function (u, i) { console.log(i, u.el.tagName + '.' + u.el.className, u.text); });
       return units;
+    };
+    window.__audioDebugMode = function () { return state.mode; };
+    window.__audioDebugState = function () {
+      return { mode: state.mode, playing: state.playing, qi: state.qi, queueLen: state.queue.length,
+        manifest: mp3Manifest, audioSrc: audioEl && audioEl.src, audioError: audioEl && audioEl.error };
     };
   }
 
