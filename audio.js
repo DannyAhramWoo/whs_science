@@ -372,6 +372,27 @@
     return mergeShortNumbers(out);
   }
 
+  // The MP3 manifest is generated once from a full-page extractUnits(contentRoot())
+  // and its files are named by that array's position (000.mp3, 001.mp3, ...).
+  // A section's own extractUnits(section) starts a fresh array at 0, which
+  // would otherwise make every "LISTEN" button play from the page's first
+  // MP3. Extracting the whole page up front and tagging every unit with its
+  // page-wide position keeps that position available even after a unit list
+  // is later filtered down to one section.
+  var pageUnitsCache = null;
+
+  function pageUnitsWithIndex() {
+    if (!pageUnitsCache) {
+      pageUnitsCache = extractUnits(contentRoot());
+      pageUnitsCache.forEach(function (u, i) { u.pageIndex = i; });
+    }
+    return pageUnitsCache;
+  }
+
+  function sectionUnits(section) {
+    return pageUnitsWithIndex().filter(function (u) { return section.contains(u.el); });
+  }
+
   function mergeShortNumbers(units) {
     var out = [];
     for (var i = 0; i < units.length; i++) {
@@ -582,8 +603,14 @@
     mp3Manifest.units.forEach(function (m) { byIndex[m.i] = m.file; });
     var q = [];
     for (var ui = 0; ui < units.length; ui++) {
-      if (!(ui in byIndex)) return null; // incomplete manifest for this scope, don't mix modes
-      q.push({ src: pageAudioDir() + byIndex[ui], unitIndex: ui });
+      // pageIndex (set by pageUnitsWithIndex()) is the position the MP3
+      // filenames were generated from; a section's units keep that original
+      // page-wide position even though they now sit at a different position
+      // (ui) in this shorter, section-scoped array. Units built any other
+      // way (e.g. future debug callers) fall back to their array position.
+      var mi = units[ui].pageIndex !== undefined ? units[ui].pageIndex : ui;
+      if (!(mi in byIndex)) return null; // incomplete manifest for this scope, don't mix modes
+      q.push({ src: pageAudioDir() + byIndex[mi], unitIndex: ui });
     }
     return q;
   }
@@ -807,8 +834,7 @@
       e.preventDefault();
       e.stopPropagation();
       if (state.playing && state.scope === section) { stop(); return; }
-      var units = extractUnits(section);
-      play(units, section);
+      play(sectionUnits(section), section);
     });
     return b;
   }
@@ -836,7 +862,7 @@
     btnPage.textContent = '▸ PLAY PAGE';
     btnPage.addEventListener('click', function () {
       if (state.playing && !state.scope) { stop(); return; }
-      play(extractUnits(contentRoot()), null);
+      play(pageUnitsWithIndex(), null);
     });
 
     btnPause = el('button', 'audio-ctl');
